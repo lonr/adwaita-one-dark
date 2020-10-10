@@ -1,39 +1,73 @@
 # Adwaita One Dark
 
-[Adwaita](https://github.com/GNOME/gtk/tree/mainline/gtk/theme/Adwaita)(A Gnome theme) with the [One Dark color scheme](https://github.com/Binaryify/OneDark-Pro/blob/master/themes/OneDark-Pro.json)
+[Adwaita](https://github.com/GNOME/gtk/tree/mainline/gtk/theme/Adwaita)(A GNOME theme) with the [One Dark color scheme](https://github.com/Binaryify/OneDark-Pro/blob/master/themes/OneDark-Pro.json)
 
-Usage:
+## How to use
 
 1. [Download](https://github.com/lonr/adwaita-one-dark/releases) and then unzip `Adwaita-One-Dark` to `~/.local/share/themes`(or `/usr/share/themes`)
 2. Install [GNOME Tweaks](https://wiki.gnome.org/Apps/Tweaks) and [User Themes Extension](https://extensions.gnome.org/extension/19/user-themes/)
-3. Open Tweaks and select `Applications` and `Shell` theme
-4. <kbd>Alt</kbd> + <kbd>F2</kbd>; input `r`; enter to refresh
+3. Open Tweaks and select `Applications` theme and `Shell` theme
+4. <kbd>Alt</kbd> + <kbd>F2</kbd>; input `r`; <kbd>Enter</kbd> to refresh
 
-## Changes
+## Colors I changed
 
-- `$bg_color: #282c34;`
 - `$base_color: #21252b;`
+- `$bg_color: #282c34;`
 - `$selected_bg_color: #4d78cc;`
 
-## Releases
+## Versions
 
+- You can get both versions via GNOME Tweaks -> "About Tweaks"
+- Get GNOME Shell version `gnome-shell --version` eg. `3.38.0`
+- Get GTK version `dnf list --installed | grep '^gtk3'` eg. `3.24.23`
+- Fedora 33 Beta
+  - [GNOME Shell 3.38.0](https://gitlab.gnome.org/GNOME/gnome-shell/-/tree/3.38.0/data/theme)
+  - [Adwaita(GTK) 3.24.23](https://gitlab.gnome.org/GNOME/gtk/-/tree/3.24.23/gtk/theme/Adwaita)
+  - [Hand 1.0.0](https://gitlab.gnome.org/GNOME/libhandy/-/tree/1.0.0/src/themes)
 - Fedora 32
   - [GNOME Shell 3.36.1](https://gitlab.gnome.org/GNOME/gnome-shell/-/tree/3.36.1/data/theme)
   - [Adwaita(GTK) 3.24.18](https://gitlab.gnome.org/GNOME/gtk/-/tree/3.24.18/gtk/theme/Adwaita)
 
-## Notes
+## How to build by hand
 
-- `gnome-shell --version` eg. 3.34.1
-- Adwaita is a part of the GTK repo `dnf list --installed | grep gtk` eg.  3.24.13
+You need install [SassC](https://github.com/sass/sassc) first.(`sudo dnf install sassc` in Fedora)
+
+To build GNOME Shell:
+
+1. Choose a branch and download [the directory of GNOME Shell theme](https://gitlab.gnome.org/GNOME/gnome-shell/tree/master/data/theme), unzip and move the files to `src/gnome-shell`
+2. Modify `src/gnome-shell/gnome-shell-sass/_colors.scss`(or whatever you want)
+3. Run commands from root of the project
+   1. Delete old output `rm -rf ./Adwaita-One-Dark/gnome-shell`
+   2. Generate the css file 
+      - `mkdir -p Adwaita-One-Dark/gnome-shell/`
+      - `sassc src/gnome-shell/gnome-shell.scss Adwaita-One-Dark/gnome-shell/gnome-shell.css`
+   3. Copy `pad-osd.css` too `cp src/gnome-shell/pad-osd.css Adwaita-One-Dark/gnome-shell/pad-osd.css`(I don't know if the file is useful)
+4. Note that the assets in `gnome-shell` don't need to be included(the theme will use assets by things like `url("resource:///org/gnome/shell/theme/dash-placeholder.svg")` )
+
+To build GTK theme:
+
+1. Choose a branch and download [the directory of GTK theme](https://gitlab.gnome.org/GNOME/gtk/tree/master/gtk/theme/Adwaita), unzip and move the files inside to `src/gtk-3.0`
+2. Choose a branch and download [the directory of Handy theme for Adwaita](https://gitlab.gnome.org/GNOME/libhandy/-/tree/master/src/themes), unzip and move the files inside to `src/libhandy-themes`
+3. Modify `src/gtk-3.0/_colors.scss`(or whatever you want)
+4. Run commands from root of the project
+   1. Delete old output `rm -rf ./Adwaita-One-Dark/gtk-3.0`
+   2. Copy `_drawing.scss` and modified `_colors.scss` to `src/libhandy-themes`
+      - `cp src/gtk-3.0/_drawing.scss src/libhandy-themes/`
+      - `cp src/gtk-3.0/_colors.scss src/libhandy-themes/`
+   3. Remove `src/libhandy-themes/Adwaita.css` to avoid a SassC import error
+   4. Edit `src/gtk-3.0/gtk-contained-dark.scss`: add `@import '../libhandy-themes/Adwaita-dark';` above `@import 'colors-public';`
+   5. Generate the css file 
+      - `mkdir -p Adwaita-One-Dark/gtk-3.0`
+      - `sassc -M -t compact src/gtk-3.0/gtk-contained-dark.scss Adwaita-One-Dark/gtk-3.0/gtk.css`
+   6. Copy the assets `cp -r src/gtk-3.0/assets Adwaita-One-Dark/gtk-3.0`
+
+## Notes
 
 Some apps use `$sidebar_bg_color`(Nautilus) for sidebars, but some apps use `$base_color`(Tweaks)
 
-repos
+TODO: replace assets references in GTK theme
 
-1. [Application theme](https://gitlab.gnome.org/GNOME/gtk/tree/master/gtk/theme/Adwaita)
-2. [Gnome Shell theme](https://gitlab.gnome.org/GNOME/gnome-shell/tree/master/data/theme)
-
-palette
+<!-- palette
 
 one light:
 ```less
@@ -65,4 +99,6 @@ one light:
 @syntax-gutter: darken(@syntax-bg, 36%); // #9d9d9f
 @syntax-guide:  fade(@syntax-fg, 20%);
 @syntax-accent: hsl(@syntax-hue, 100%, 66% ); // #526fff
-```
+``` -->
+
+<!-- https://gitlab.com/gitlab-org/gitlab-foss/-/issues/62037 -->
