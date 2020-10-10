@@ -23,7 +23,7 @@
 - Fedora 33 Beta
   - [GNOME Shell 3.38.0](https://gitlab.gnome.org/GNOME/gnome-shell/-/tree/3.38.0/data/theme)
   - [Adwaita(GTK) 3.24.23](https://gitlab.gnome.org/GNOME/gtk/-/tree/3.24.23/gtk/theme/Adwaita)
-  - [Hand 1.0.0](https://gitlab.gnome.org/GNOME/libhandy/-/tree/1.0.0/src/themes)
+  - [Handy 1.0.0](https://gitlab.gnome.org/GNOME/libhandy/-/tree/1.0.0/src/themes)
 - Fedora 32
   - [GNOME Shell 3.36.1](https://gitlab.gnome.org/GNOME/gnome-shell/-/tree/3.36.1/data/theme)
   - [Adwaita(GTK) 3.24.18](https://gitlab.gnome.org/GNOME/gtk/-/tree/3.24.18/gtk/theme/Adwaita)
@@ -54,7 +54,7 @@ To build GTK theme:
    2. Copy `_drawing.scss` and modified `_colors.scss` to `src/libhandy-themes`
       - `cp src/gtk-3.0/_drawing.scss src/libhandy-themes/`
       - `cp src/gtk-3.0/_colors.scss src/libhandy-themes/`
-   3. Remove `src/libhandy-themes/Adwaita.css` to avoid a SassC import error
+   3. Remove `src/libhandy-themes/Adwaita-dark.css` to avoid a SassC import error
    4. Edit `src/gtk-3.0/gtk-contained-dark.scss`: add `@import '../libhandy-themes/Adwaita-dark';` above `@import 'colors-public';`
    5. Generate the css file 
       - `mkdir -p Adwaita-One-Dark/gtk-3.0`
