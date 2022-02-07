@@ -1,0 +1,5 @@
+// see libhandy/_definitions.scss
+$high_contrast: false;
+@import 'gtk-contained-dark.scss';
+// https://gitlab.gnome.org/GNOME/gnome-clocks/-/issues/142
+@import 'libhandy/Adwaita-base';
