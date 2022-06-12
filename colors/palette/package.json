@@ -1,0 +1,30 @@
+{
+  "name": "palette",
+  "version": "42.0.0",
+  "private": "true",
+  "description": "",
+  "keywords": [],
+  "license": "GPL-3.0",
+  "author": "lonr",
+  "type": "module",
+  "main": "lib/theme.js",
+  "typings": "lib/theme.d.ts",
+  "scripts": {
+    "build": "heft build --clean",
+    "start": "node --es-module-specifier-resolution=node lib/theme.js"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "~0.1.2",
+    "deepmerge": "~4.2.2",
+    "is-mergeable-object": "~1.1.1",
+    "lodash": "~4.17.21"
+  },
+  "devDependencies": {
+    "@rushstack/heft": "~0.45.5",
+    "@types/lodash": "~4.14.182",
+    "@types/node": "~17.0.39",
+    "eslint": "~8.17.0",
+    "typescript": "~4.6.3",
+    "@rushstack/eslint-config": "~2.6.0"
+  }
+}

@@ -1,8 +1,13 @@
 {
-  "cSpell.words": [
-    "getos",
-    "Gresource",
-    "Untar",
-    "Yaru"
+  "files.associations": {
+    "*.json": "jsonc"
+  },
+  "cSpell.words": ["argb", "csstree", "deepmerge", "mergeable", "rushstack", "Shaden", "Tinten"],
+  "eslint.workingDirectories": [
+    { "pattern": "./colors/*/" },
+    { "pattern": "./rigs/*/" },
+    "gtk",
+    "terminals",
+    "./utils"
   ]
 }

@@ -1,0 +1,650 @@
+// 3rd party application styles
+
+// Nautilus
+.nautilus-window {
+  // Without this nautilus iconview grabs the bg_color
+  notebook,
+  notebook > stack:not(:only-child),
+  notebook > stack:not(:only-child) searchbar { @extend %view; }
+
+  headerbar, .titlebar {
+    // Path-bar
+    .path-bar-box {
+      border-radius: $button_radius;
+      border: none;
+      padding-right: 6px;
+      @include button(normal, $headerbar_color, $fg_color);
+
+      &:backdrop {
+        @include button(backdrop, $bg_color, $backdrop_fg_color);
+      }
+    }
+
+    .nautilus-path-bar {
+      border-radius: $button_radius;
+      @include button(normal, $headerbar_color, $fg_color);
+      min-height: 34px;
+
+      &:backdrop {
+        @include button(backdrop, $bg_color, $backdrop_fg_color);
+      }
+
+      button:not(.titlebutton) {
+        margin: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+
+        &.current-dir {
+          border-width: 0px;
+          border-radius: $button_radius;
+          background-color: transparent;
+        }
+
+        &:not(.current-dir) {
+          border-width: 0px;
+          border-radius: $button_radius;
+          background-color: transparent;
+
+          &:hover {
+            @include button(active, $bg_color, $fg_color);
+            * { opacity: 1; }
+            &:backdrop {
+              @include button(backdrop-active, $bg_color, $backdrop_fg_color);
+            }
+          }
+        }
+
+        &.toggle.popup {
+          @include button(normal, $headerbar_color, $fg_color);
+          border-radius: 0 $button-radius $button-radius 0;
+          border-left: 1px solid $linked_border;
+          image { color: $text_color; }
+
+          &:hover { @include button(hover, $headerbar_color, $fg_color); }
+
+          &:checked { @include button(active, $headerbar_color, $fg_color); }
+
+          &:backdrop {
+            @include button(backdrop, $bg_color, $backdrop_fg_color);
+            &:hover { @include button(normal, $bg_color, $backdrop_fg_color); }
+            border-left: 1px solid $backdrop_linked_border;
+          }
+        }
+      }
+    }
+  }
+
+  .path-buttons-box {
+    border: 2px solid transparent;
+
+    button { min-height: 22px; }
+  }
+
+  .titlebar {
+    :not(.raised) .linked > button {
+      @extend %linked;
+      @extend %headerbar_buttons;
+    }
+  }
+
+  // Back and forward buttons
+  .linked.raised button.image-button:not(:only-child) {
+    &, &:backdrop, &:disabled, &:backdrop:disabled {
+      @extend %headerbar_buttons;
+      border: none;
+    }
+  }
+
+  .linked button.disclosure-button:not(:hover):not(:checked):not(:active),
+  .linked .image-button:not(:hover):not(:checked):not(:active):not(.model) {
+    &, &:backdrop { background-color: transparent; }
+  }
+
+  .search + .toggle.popup {
+    @extend %colored_buttons;
+    border-left-color: $linked_border;
+  }
+
+  // Location entry button
+  .linked entry ~ .image-button:not(:hover):not(:checked):not(:active):not(.model) { @extend %colored_buttons; }
+
+  .view .dim-label { color: transparentize($fg_color, 0.45); }
+
+  // Add a border around thumbnails
+  .thumbnail {
+    box-shadow: 0px 1px 2px 0px transparentize($borders_color, 0.5),
+                0px 0px 0px 1px transparentize($borders_color, 0.5),
+                0px 2px 0px 0px transparentize($borders_color, 0.5);
+    border-radius: 2px;
+    // Background for thumbnails with transparent areas.
+    background: url('assets/Checkerboard.png') repeat;
+  }
+
+   // https://github.com/lassekongo83/adw-gtk3/issues/89
+  .operations-list,
+  .operations-list > :hover {
+    background: none;
+  }
+
+  // https://github.com/lassekongo83/adw-gtk3/issues/111
+  .nautilus-canvas-item { border-radius: 0px; }
+
+  .nautilus-canvas-item.label-text { border-radius: $button_radius; }
+}
+
+// Floating status bar
+.floating-bar {
+  padding: 3px;
+  background-color: $base_color;
+  border-width: 1px;
+  border-style: solid solid none;
+  border-color: $borders_color;
+  border-radius: 8px 0 0 0;
+}
+.floating-bar.bottom.left {
+  border-left-style: none;
+  border-top-left-radius: 0;
+}
+.floating-bar.bottom.right {
+  border-right-style: none;
+  border-top-right-radius: 0;
+}
+.floating-bar:backdrop {
+  background-color: $base_color;
+  border-color: $backdrop_borders_color;
+}
+.floating-bar button {
+  padding: 0px;
+}
+
+// Disk space pie
+$disk_space_unknown: #888a85;
+$disk_space_used: #729fcf;
+$disk_space_free: #eeeeec;
+
+.disk-space-display {
+  border-style: solid;
+  border-width: 2px;
+}
+.disk-space-display.unknown {
+  background-color: $disk_space_unknown;
+  border-color: shade($disk_space_unknown, 0.7);
+  color: $disk_space_unknown;
+}
+.disk-space-display.unknown.border {
+  color: shade($disk_space_unknown, 0.7);
+}
+
+.disk-space-display.used {
+  background-color: $disk_space_used;
+  border-color: shade($disk_space_used, 0.7);
+  color: $disk_space_used;
+}
+.disk-space-display.used.border {
+  color: shade($disk_space_used, 0.7);
+}
+.disk-space-display.free {
+  background-color: $disk_space_free;
+  border-color: shade($disk_space_free, 0.7);
+  color: $disk_space_free;
+}
+.disk-space-display.free.border {
+  color: shade($disk_space_free, 0.7);
+}
+
+// Gedit
+.gedit-search-slider {
+  // gives gedit search entry some padding and a border
+  // otherwise it's right under the headerbar
+  background: $bg_color;
+  border: 1px solid $borders_color;
+  border-top-style: none;
+  padding: 4px 8px;
+  border-radius: 0 0 $button_radius $button_radius;
+
+  &:backdrop {
+    background-color: $backdrop_bg_color;
+    border-color: $backdrop_borders_color;
+  }
+
+  button {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}
+
+.gedit-document-panel {
+  // 'documents' pane
+
+  background-color: $bg_color;
+
+  row.activatable {
+    padding: 6px;
+  }
+
+  row button {
+    // 'close' button
+    min-width: 22px;
+    min-height: 22px;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  row:hover button {
+    &:hover {
+      background-color: rgba($fg_color, 0.15);
+    }
+
+    &:active {
+      background-color: rgba($fg_color, 0.25);
+    }
+  }
+
+  row:hover:selected button:hover {
+    color: $fg_color;
+  }
+}
+
+// gnome-tweaks
+list.tweak-categories separator.horizontal {
+  background: transparent;
+  margin: 2px 0;
+}
+
+// GNOME Todo
+.org-gnome-Todo {
+  taskrow.activatable.new-task-row button.popup.toggle {
+    border-radius: 0px;
+    border: none;
+    border-left: 1px solid $borders-color;
+    padding-left: 10px;
+    padding-right: 10px;
+    -gtk-outline-radius: 0px;
+  }
+
+  viewport.view,
+  listbox.transparent {
+    background-color: darken($base_color, 5%);
+
+    &:backdrop {
+      background-color: $backdrop_base_color;
+    }
+  }
+}
+
+// Guake
+// Fix bugged transparent headerbar background
+window#guake-terminal notebook header {
+  background: $headerbar_color;
+}
+
+// XFCE4
+XfdesktopIconView.view {
+  background: transparent;
+  color: $osd_fg_color;
+  border-radius: $button_radius;
+  &:active {
+    background: rgba(darken($selected_bg_color, 15%), 0.5);
+    text-shadow: 0 1px 1px black;
+  }
+  .label { text-shadow: 1px 1px 2px black; }
+  .rubberband {
+    @extend rubberband;
+    border-radius: 0;
+  }
+}
+
+$panel_bg_color: #000;
+$panel_fg_color: if($variant == 'light', lighten($bg_color, 10%), darken($fg_color, 5%));
+$panel_transition_duration: 250ms;
+.xfce4-panel.background {
+  border: none; 
+  background-color: $panel_bg_color;
+  color: $panel_fg_color;
+  transition-duration: $panel_transition_duration;
+
+  .tasklist button,
+  #actions-button,
+  #clock-button { margin: 2px; }
+
+  .tasklist image {
+    //-gtk-icon-transform: scale(0); margin: -10px; // Removes the icon
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  button {
+    label {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+
+  button {
+    padding: 0 6px;
+    min-height: 12px;
+    min-width: 12px;
+    border-radius: 24px;
+    color: $panel_fg_color;
+    @include button(undecorated);
+
+    &:disabled {
+      background-color: transparent;
+      color: transparentize($panel_fg_color, 0.8);
+    }
+    
+    &:hover:not(:active):not(:checked) {
+      color: $panel_fg_color;
+      background-color: transparentize($panel_fg_color, 0.85);
+      background-image: none;
+    }
+
+    &:checked {
+      background-color: transparentize($panel_fg_color, 0.8);
+      color: $panel_fg_color;
+
+      &:hover { background-color: transparentize($panel_fg_color, 0.75); }
+
+      &:disabled {
+        @include button(undecorated);
+        color: transparentize($panel_fg_color, 0.8);
+      }
+    }
+    entry { caret-color: $text_color; }
+    menu {
+      -gtk-icon-effect: none;
+
+      text-shadow: none;
+      // Theme pulseaudio-plugin's mpris buttons
+      .linked button {
+        @extend %linked;
+        @include button(normal, $menu_color, $text_color);
+        &:disabled {
+          @include button(insensitive);
+          border-color: transparentize($borders_color, 0.5);
+        }
+      }
+    }
+  }
+}
+
+// Nemo
+.nemo-desktop.nemo-canvas-item {
+  color: $selected_fg_color;
+  text-shadow: 1px 1px 2px transparentize(black, 0.2);
+}
+
+.nemo-properties-dialog {
+  .dialog-action-box .dialog-action-area {
+    // add margin to preferences buttons
+    margin: 2px 6px 4px;
+  }
+
+  toolbar stackswitcher.linked button {
+    margin-right: 0;
+
+    &:backdrop {
+      color: $backdrop_fg_color;
+      background-color: $backdrop_bg_color;
+    }
+  }
+}
+
+.nemo-window {
+  .sidebar {
+    scrolledwindow.frame.nemo-places-sidebar {
+      // get rid of double border in sidebar
+      border: none;
+    }
+
+    viewport.frame box.vertical treeview.view.places-treeview {
+      // use sidebar bg color
+      background-image: image($sidebar_bg_color);
+      border-radius: 0; // get rid of weird radius on selected rows
+
+      &:backdrop {
+        background-image: image($backdrop_sidebar_bg_color);
+      }
+
+      &:selected {
+        background: $selected_bg_color;
+      }
+
+      &:not(:selected) {
+        &:not(:backdrop):hover {
+          background-image: image($base_hover_color);
+        }
+      }
+    }
+  }
+
+  .nemo-inactive-pane .view,
+  .nemo-inactive-pane iconview {
+    // Shades the background of the inactive pane
+    background-color: $backdrop_bg_color;
+  }
+
+  .nemo-window-pane {
+    widget.entry {
+      // Add border around rename text entry
+      border: 1px solid;
+      border-radius: 3px;
+      color: $fg_color;
+      border-color: $selected_bg_color;
+      background-color: $bg_color;
+    }
+
+    widget.entry:selected {
+      // Add highlighting to selected text in rename text entry
+      border: 1px solid;
+      border-radius: 3px;
+      color: $selected_fg_color;
+      border-color: $selected_bg_color;
+      background-color: $selected_bg_color;
+    }
+  }
+
+  toolbar.horizontal.primary-toolbar {
+    // add border under toolbar
+    border-bottom: 1px solid $borders_color;
+
+    widget.linked.raised button {
+      // use proper icons for next and left in stackswitcher-like pathbar
+      &:first-child widget {
+        -gtk-icon-source: -gtk-icontheme('go-previous-symbolic');
+      }
+      &:last-child widget {
+        -gtk-icon-source: -gtk-icontheme('go-next-symbolic');
+      }
+    }
+
+    toolitem box widget * {
+      // reset toolbar button dimensions
+      min-height: 0;
+      min-width: 0;
+    }
+
+    .linked button {
+      // link linked buttons
+      margin-right: 0;
+    }
+
+    button {
+      // return non-flat buttons
+      @each $state,
+      $t in ("", "normal"),
+      (":hover", "hover"),
+      (":active, &:checked", "active"),
+      (":disabled", "insensitive"),
+      (":disabled:active, &:disabled:checked", "insensitive-active"),
+      (":backdrop", "backdrop"),
+      (":backdrop:active, &:backdrop:checked", 'backdrop-active'),
+      (":backdrop:disabled", 'backdrop-insensitive'),
+      (":backdrop:disabled:active, &:backdrop:disabled:checked", 'backdrop-insensitive-active') {
+        &#{$state} {
+          @include button($t);
+        }
+      }
+    }
+  }
+}
+
+// USB Creator GTK
+#dialog-action_area3 {
+  margin: 5px;
+}
+
+// Chromium
+window.background.chromium {
+  background-color: if($variant == 'light', $bg_color, lighten($bg_color, 10%));
+
+  entry,
+  > button {
+    border-color: if($variant == 'light', darken($bg_color, 27%), lighten($bg_color, 27%));
+    background-color: if($variant == 'light', darken($bg_color, 20%), lighten($bg_color, 21%));
+  }
+
+  textview.view { 
+    background-color: $base_color;
+  }
+}
+
+// GNOME Calendar
+.org-gnome-Calendar {
+  .titlebar .text-button { @extend %colored_buttons; }
+}
+
+// Firefox
+#MozillaGtkWidget.background {
+  button { font-weight: initial; }
+
+  @if $variant == 'light' {
+    scrollbar slider { background-color: darken($scrollbar_slider_color, 20%); }
+  }
+
+  // https://github.com/lassekongo83/adw-gtk3/issues/130
+  menuitem {
+    check,
+    radio {
+      min-height: 12px;
+      min-width: 12px;
+    }
+  }
+}
+@if $variant == 'dark' {
+  #MozillaGtkWidget {
+    &.background { background-color: $headerbar_color; }
+
+    > widget {
+      border { border-color: $borders_color; }
+    }
+  }
+}
+
+// GNOME Web / Epiphany
+// https://github.com/lassekongo83/adw-gtk3/issues/59
+button .download_progress trough { min-height: 2px; }
+
+.titlebar .navigation-box.linked button:not(:only-child) {
+  &, &:disabled, &:backdrop {
+    &:not(:hover):not(:active) { @include button(undecorated); }
+    &:last-child { border-left-color: transparent; }
+  }
+}
+
+// Attempts to style the suggestions. The text color of the large label/.title can't be styled.
+dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > list > row:selected {
+  &, &:hover { background-color: $selected_bg_color; } // FIXME: Hover not working for some reason.
+
+  .subtitle {
+    color: $selected_fg_color;
+    @extend .dim-label;
+  }
+  image { color: $selected_fg_color; }
+}
+
+// GNOME Builder
+.org-gnome-Builder {
+  .dzlmenubuttonitem {
+    font-weight: normal;
+    min-height: 32px;
+  }
+}
+
+// Phosh
+// From: https://gitlab.gnome.org/World/Phosh/squeekboard/-/tree/master/data
+sq_view {
+  font-size: 1.5em;
+  background-color: mix($base_color, $fg_color, 0.1);
+  box-shadow: inset 0 1px 0 0 mix($borders_color, $base_color, 0.8);
+
+  &.wide sq_button { margin: 3px; }
+
+  &.pin sq_button {
+    border-radius: 0px;
+    margin: 1px 1px 1px 1px;
+  }
+}
+
+sq_button {
+  border-radius: $button_radius;
+  margin: 2px;
+  color: $fg_color;
+  background: transparentize($fg_color, 0.07);
+  box-shadow: 0 1px 0 0 rgba(0,0,0,0.2);
+
+  &:active { background: transparentize($fg_color, 0.11); }
+
+  &.altline, &.special {
+    background: transparentize($fg_color, 0.15);
+    &:active { background: transparentize($fg_color, 0.2); }
+  }
+
+  &.latched {
+    font-weight: bold;
+    background: transparentize($fg_color, 0.2);
+    color: transparentize($fg_color, 0.8);
+  }
+
+  &.locked {
+    font-weight: bold;
+    background: transparentize($fg_color, 0.5);
+    color: $base_color;
+  }
+
+  &.action { font-size: 0.75em; }
+
+  &.small { font-size: 0.5em; }
+}
+
+#Return {
+  background: $selected_bg_color;
+  color: $selected_fg_color;
+
+  &:active {
+    background: mix($selected_bg_color, black, 0.2);
+    color: mix($selected_fg_color, black, 0.2);
+  }
+}
+
+// GNOME Terminal
+terminal-window notebook > header {
+  &.top,
+  &.bottom {
+    tabs {
+      &:not(:only-child) {
+        &:first-child { margin-left: 0px; }
+        &:last-child { margin-right: 0px; }
+      }
+    }
+  }
+}
+
+// GNOME Console/kgx
+// FIXME: Does not work for some unknown reason
+//.terminal-window {
+//  &.root {}
+//  &.remote {}
+//}
+

@@ -1,0 +1,35 @@
+{
+  "name": "preview",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "",
+  "keywords": [],
+  "license": "GPL-3.0",
+  "author": "lonr",
+  "main": "lib/start.js",
+  "typings": "lib/start.d.ts",
+  "scripts": {
+    "build": "heft build --clean",
+    "start": "heft start"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "~0.1.2",
+    "palette": "workspace:*",
+    "react": "~18.1.0",
+    "react-dom": "~18.1.0"
+  },
+  "devDependencies": {
+    "@rushstack/heft": "~0.45.5",
+    "@rushstack/heft-webpack5-plugin": "~0.5.20",
+    "@types/react": "~18.0.10",
+    "@types/react-dom": "~18.0.5",
+    "@types/webpack-env": "~1.17.0",
+    "css-loader": "~6.7.1",
+    "eslint": "~8.17.0",
+    "html-webpack-plugin": "~5.5.0",
+    "style-loader": "~3.3.1",
+    "typescript": "~4.6.3",
+    "webpack": "~5.68.0",
+    "@rushstack/eslint-config": "~2.6.0"
+  }
+}
