@@ -21,8 +21,8 @@ jobs:
               upstreambranch: main,
               localbranch: gnome-shell,
               projectdir: gnome-shell,
-              src: data/theme/,
-              dest: gtk/upstream/gnome-shell/theme
+              src: data/theme,
+              dest: gtk/upstream/gnome-shell
             },
             {
               project: GTK3,
@@ -30,8 +30,8 @@ jobs:
               upstreambranch: main,
               localbranch: gtk3,
               projectdir: adw-gtk3,
-              src: gtk/src/adw-gtk3/gtk-3.0/,
-              dest: gtk/upstream/gtk-3.0/
+              src: gtk/src/adw-gtk3/gtk-3.0,
+              dest: gtk/upstream/gtk-3.0
             },
             {
               project: GTK4,
@@ -39,7 +39,7 @@ jobs:
               upstreambranch: main,
               localbranch: gtk4,
               projectdir: libadwaita,
-              src: src/stylesheet/,
+              src: src/stylesheet,
               dest: gtk/upstream/gtk-4.0
             }
           ]
@@ -53,16 +53,8 @@ jobs:
           pushd /tmp
           git clone --branch ${UPSTEAM_BRANCH} --depth 1 ${UPSTREAM_REPO_URL}
           popd
-          if [ ${DEST: -1} == '/' ]; then
-            mkdir -p ${DEST}
-            for src in ${SRC}; do
-              rm -rf ${DEST}/src
-              cp -a /tmp/${PROJECT_DIR}/${src} ${DEST}
-            done
-          else
-            rm -rf ${DEST}
-            cp -a /tmp/${PROJECT_DIR}/${SRC} ${DEST}
-          fi
+          rm -rf ${DEST}
+          cp -a /tmp/${PROJECT_DIR}/${SRC} ${DEST}
           MODIFIED=$(git status --porcelain)
           if [ -n "$MODIFIED" ]; then
             hasModif="true"
