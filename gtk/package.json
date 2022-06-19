@@ -9,8 +9,8 @@
   "type": "module",
   "scripts": {
     "build": "heft build --clean",
-    "compile": "node --es-module-specifier-resolution=node lib/compile.js",
-    "render": "node --es-module-specifier-resolution=node lib/render.js"
+    "render": "node --es-module-specifier-resolution=node lib/render.js",
+    "compile": "node --es-module-specifier-resolution=node lib/compile.js"
   },
   "dependencies": {
     "css-tree": "~2.1.0",
