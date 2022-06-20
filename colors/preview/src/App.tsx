@@ -9,15 +9,15 @@ interface ColorProps {
 }
 
 const findProperTextColor = (roleName: string, rolesGroup: RolesGroup): Hex => {
-  let guessRole: string;
+  let guessedRole: string;
 
   if (roleName.startsWith('on')) {
-    guessRole = roleName.slice(2).toLowerCase();
+    guessedRole = roleName.slice(2).toLowerCase();
   } else {
-    guessRole = 'on' + roleName.charAt(0).toUpperCase() + roleName.slice(1);
+    guessedRole = 'on' + roleName.charAt(0).toUpperCase() + roleName.slice(1);
   }
-  if (rolesGroup[guessRole]) {
-    return rolesGroup[guessRole];
+  if (rolesGroup[guessedRole]) {
+    return rolesGroup[guessedRole];
   }
 
   const hct = Hct.fromInt(argbFromHex(rolesGroup[roleName]));
