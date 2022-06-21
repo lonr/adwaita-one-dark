@@ -76,12 +76,14 @@ importers:
       css-tree: ~2.1.0
       eslint: ~8.17.0
       fs-extra: ~10.1.0
+      palette: workspace:*
       sass: ~1.52.2
       typescript: ~4.6.3
       utils: workspace:*
     dependencies:
       css-tree: 2.1.0
       fs-extra: 10.1.0
+      palette: link:../colors/palette
       sass: 1.52.3
       utils: link:../utils
     devDependencies:

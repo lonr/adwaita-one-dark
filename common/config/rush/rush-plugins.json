@@ -4,6 +4,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush-plugins.schema.json",
   "plugins": [
+    {
+      "packageName": "rush-init-project-plugin",
+      "pluginName": "rush-init-project-plugin",
+      "autoinstallerName": "command-plugins"
+    }
     /**
      * Each item defines a plugin configuration used by Rush.
      */

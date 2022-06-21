@@ -1,4 +1,4 @@
-import { theme, themeName, ansi, Hex } from 'palette';
+import { theme, themeName, ansi, Hex } from './theme';
 
 type NunjucksContext = {
   themeName: string;

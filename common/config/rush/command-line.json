@@ -11,7 +11,6 @@
    * "rush my-global-command --help".
    */
   "commands": [
-
     {
       "name": "prettier",
       "commandKind": "global",

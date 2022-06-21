@@ -7,11 +7,10 @@
   "license": "GPL-3.0",
   "author": "lonr",
   "type": "module",
-  "main": "lib/theme.js",
-  "typings": "lib/theme.d.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "heft build --clean",
-    "start": "node --es-module-specifier-resolution=node lib/theme.js"
+    "build": "heft build --clean"
   },
   "dependencies": {
     "@material/material-color-utilities": "~0.1.2",
