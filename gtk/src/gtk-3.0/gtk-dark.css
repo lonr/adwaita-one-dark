@@ -116,11 +116,11 @@
 }
 .gtkstyle-fallback:hover {
   color: white;
-  background-color: #3e4451;
+  background-color: shade(#282c34,1.1);
 }
 .gtkstyle-fallback:active {
   color: white;
-  background-color: #121417;
+  background-color: shade(#282c34,0.9);
 }
 .gtkstyle-fallback:disabled {
   color: mix(white,#282c34,0.5);
@@ -185,7 +185,7 @@ textview text:selected {
 }
 
 textview border {
-  background-color: #252930;
+  background-color: mix(#282c34,#21252b,0.5);
 }
 
 .rubberband,
@@ -383,7 +383,7 @@ flowbox flowboxchild:selected {
   padding: 0;
 }
 .content-view .tile:backdrop {
-  background-color: #1d2026;
+  background-color: mix(black,#282c34,0.95);
 }
 .content-view .tile:active, .content-view .tile:selected {
   background-color: @accent_bg_color;
@@ -415,10 +415,10 @@ label.error {
   color: #c01c28;
 }
 label.error:disabled {
-  color: rgba(192, 28, 40, 0.5);
+  color: alpha(#c01c28,0.5);
 }
 label.error:disabled:backdrop {
-  color: rgba(192, 28, 40, 0.4);
+  color: alpha(#c01c28,0.4);
 }
 
 .dim-label, dzlsuggestionpopover > revealer > box > elastic > scrolledwindow > viewport > list > row:selected .subtitle, .welcome .dim-label, .welcome label.separator,
@@ -444,7 +444,7 @@ assistant .sidebar label {
   padding: 6px 12px;
 }
 assistant .sidebar label.highlight {
-  background-color: #53565d;
+  background-color: mix(#282c34,white,0.2);
 }
 
 .osd .scale-popup, .app-notification,
@@ -615,7 +615,7 @@ entry.warning selection {
 }
 spinbutton:not(.vertical) image,
 entry image {
-  color: #d3d3d5;
+  color: mix(white,#21252b,0.2);
 }
 spinbutton:not(.vertical) image:hover,
 entry image:hover {
@@ -627,7 +627,7 @@ entry image:active {
 }
 spinbutton:not(.vertical) image:backdrop,
 entry image:backdrop {
-  color: #7e8186;
+  color: mix(#94969a,#282c34,0.2);
 }
 spinbutton:drop(active):not(.vertical),
 entry:drop(active):focus,
@@ -1700,7 +1700,7 @@ modelbutton.flat,
 }
 modelbutton.flat:hover,
 .menuitem.button.flat:hover {
-  background-color: #49515f;
+  background-color: shade(mix(white,#282c34,0.907),1.36);
 }
 modelbutton.flat arrow {
   background: none;
@@ -1918,7 +1918,7 @@ spinbutton:not(.vertical) button:dir(rtl):first-child {
   -gtk-icon-shadow: none;
   color: rgba(255, 255, 255, 0.9);
   border-style: none none none solid;
-  border-color: rgba(0, 0, 0, 0.6);
+  border-color: alpha(rgba(0, 0, 0, 0.9),0.7);
   border-radius: 0;
   box-shadow: none;
   -gtk-icon-shadow: 0 1px black;
@@ -1934,8 +1934,8 @@ spinbutton:not(.vertical) button:dir(rtl):first-child {
   text-shadow: none;
   -gtk-icon-shadow: none;
   color: rgba(255, 255, 255, 0.9);
-  border-color: rgba(0, 0, 0, 0.5);
-  background-color: rgba(255, 255, 255, 0);
+  border-color: alpha(black,0.5);
+  background-color: alpha(rgba(255, 255, 255, 0.9),0.1);
   -gtk-icon-shadow: 0 1px black;
   box-shadow: none;
 }
@@ -1947,7 +1947,7 @@ spinbutton:not(.vertical) button:dir(rtl):first-child {
   text-shadow: none;
   -gtk-icon-shadow: none;
   color: rgba(255, 255, 255, 0.9);
-  border-color: rgba(0, 0, 0, 0.5);
+  border-color: alpha(black,0.5);
   -gtk-icon-shadow: none;
   box-shadow: none;
 }
@@ -1959,7 +1959,7 @@ spinbutton:not(.vertical) button:dir(rtl):first-child {
   text-shadow: none;
   -gtk-icon-shadow: none;
   color: rgba(115, 115, 115, 0.95);
-  border-color: rgba(0, 0, 0, 0.5);
+  border-color: alpha(black,0.5);
   -gtk-icon-shadow: none;
   box-shadow: none;
 }
@@ -2432,11 +2432,11 @@ headerbar.default-decoration button.titlebutton:active {
 }
 .default-decoration.titlebar:not(headerbar) button.titlebutton:backdrop,
 headerbar.default-decoration button.titlebutton:backdrop {
-  background: #323640;
+  background: shade(#282c34,1.32);
 }
 .default-decoration.titlebar:not(headerbar) button.titlebutton:backdrop:hover,
 headerbar.default-decoration button.titlebutton:backdrop:hover {
-  background: #363b46;
+  background: shade(#282c34,1.46);
 }
 .titlebar:not(headerbar) separator.titlebutton,
 headerbar separator.titlebutton {
@@ -2523,7 +2523,7 @@ window.csd > .titlebar:not(headerbar) {
 }
 
 window.devel headerbar.titlebar:not(.selection-mode) {
-  background: #282c34 cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat, linear-gradient(to right, transparent 65%, alpha(@accent_bg_color,0.1)), linear-gradient(to top, #181b20 3px, #1d2026);
+  background: #282c34 cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat, linear-gradient(to right, transparent 65%, alpha(@accent_bg_color,0.1)), linear-gradient(to top, mix(white,@headerbar_bg_color,0.97) 3px, mix(white,@headerbar_bg_color,0.95));
 }
 window.devel headerbar.titlebar:not(.selection-mode):backdrop {
   background: #282c34 cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent)) 90% 0/256px 256px no-repeat, image(#282c34);
@@ -2553,7 +2553,7 @@ window.devel headerbar.titlebar:not(.selection-mode):backdrop {
 }
 
 treeview.view {
-  border-left-color: #909295;
+  border-left-color: mix(white,#21252b,0.5);
   border-top-color: #282c34;
 }
 * {
@@ -2570,7 +2570,7 @@ treeview.view:selected:focus, treeview.view:selected {
 }
 treeview.view:selected:backdrop, treeview.view:selected {
   border-left-color: mix(@accent_fg_color,@accent_bg_color,0.5);
-  border-top-color: rgba(255, 255, 255, 0.1);
+  border-top-color: alpha(white,0.1);
 }
 treeview.view:disabled {
   color: mix(white,#282c34,0.5);
@@ -2589,10 +2589,10 @@ treeview.view.separator {
   color: #282c34;
 }
 treeview.view.separator:backdrop {
-  color: rgba(40, 44, 52, 0.1);
+  color: alpha(#282c34,0.1);
 }
 treeview.view:backdrop {
-  border-left-color: #5e6167;
+  border-left-color: mix(#94969a,#282c34,0.5);
   border-top: #282c34;
 }
 treeview.view:drop(active) {
@@ -2649,13 +2649,13 @@ treeview.view.progressbar:backdrop {
   box-shadow: none;
 }
 treeview.view.trough {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: alpha(white,0.1);
 }
 treeview.view.trough:selected:focus, treeview.view.trough:selected {
   background-color: mix(black,@accent_bg_color,0.9);
 }
 treeview.view header button {
-  color: #909295;
+  color: mix(white,#21252b,0.5);
   background-color: #21252b;
   font-weight: bold;
   font-size: small;
@@ -2663,7 +2663,7 @@ treeview.view header button {
   box-shadow: none;
 }
 treeview.view header button:hover {
-  color: #c8c9ca;
+  color: mix(mix(white,#21252b,0.5),white,0.5);
   box-shadow: none;
   transition: none;
 }
@@ -2694,7 +2694,7 @@ treeview.view header button, treeview.view header button:hover, treeview.view he
   padding: 0 6px;
   background-image: none;
   border-style: none solid solid none;
-  border-color: mix(white,#21252b,0.8);
+  border-color: alpha(currentColor,0.15);
   border-radius: 0;
   text-shadow: none;
 }
@@ -2703,7 +2703,7 @@ treeview.view header button:disabled {
   background-image: none;
 }
 treeview.view header button:backdrop {
-  color: #5e6167;
+  color: mix(#94969a,#282c34,0.5);
   border-color: #282c34;
   border-style: none solid solid none;
   background-image: none;
@@ -2762,7 +2762,7 @@ menu,
 .context-menu {
   margin: 4px;
   padding: 4px 0px;
-  background-color: #3a404b;
+  background-color: mix(white,#282c34,0.907);
   border: 1px solid mix(white,#282c34,0.85);
 }
 .csd menu,
@@ -2788,7 +2788,8 @@ menu menuitem,
 menu menuitem:hover,
 .menu menuitem:hover,
 .context-menu menuitem:hover {
-  background-color: #49515f;
+  color: @accent_fg_color;
+  background-color: shade(mix(white,#282c34,0.907),1.36);
 }
 menu menuitem:disabled,
 .menu menuitem:disabled,
@@ -2845,14 +2846,14 @@ menu > arrow,
   min-height: 16px;
   min-width: 16px;
   padding: 4px;
-  background-color: #3a404b;
+  background-color: mix(white,#282c34,0.907);
   border-radius: 0;
 }
 menu > arrow.top,
 .menu > arrow.top,
 .context-menu > arrow.top {
   margin-top: -4px;
-  border-bottom: 1px solid #373b40;
+  border-bottom: 1px solid mix(white,#21252b,0.9);
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
   -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
@@ -2862,7 +2863,7 @@ menu > arrow.bottom,
 .context-menu > arrow.bottom {
   margin-top: 8px;
   margin-bottom: -12px;
-  border-top: 1px solid #373b40;
+  border-top: 1px solid mix(white,#21252b,0.9);
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
   -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
@@ -2870,7 +2871,7 @@ menu > arrow.bottom,
 menu > arrow:hover,
 .menu > arrow:hover,
 .context-menu > arrow:hover {
-  background-color: #373b40;
+  background-color: mix(white,#21252b,0.9);
 }
 menu > arrow:backdrop,
 .menu > arrow:backdrop,
@@ -2904,7 +2905,7 @@ menuitem radio:dir(rtl) {
 
 popover.background {
   padding: 2px;
-  background-color: #3a404b;
+  background-color: mix(white,#282c34,0.907);
   box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.09), 0 2px 8px 3px rgba(0, 0, 0, 0.05);
 }
 .csd popover.background, popover.background {
@@ -3251,7 +3252,7 @@ scrollbar slider:hover:active {
   background-color: #b7bdc7;
 }
 scrollbar slider:backdrop {
-  background-color: #53565d;
+  background-color: mix(#94969a,#282c34,0.6);
 }
 scrollbar slider:disabled {
   background-color: transparent;
@@ -3363,7 +3364,7 @@ scrollbar button:backdrop {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0);
   text-shadow: none;
   -gtk-icon-shadow: none;
-  color: #53565d;
+  color: mix(#94969a,#282c34,0.6);
 }
 scrollbar button:backdrop:disabled {
   border-color: transparent;
@@ -3372,7 +3373,7 @@ scrollbar button:backdrop:disabled {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0);
   text-shadow: none;
   -gtk-icon-shadow: none;
-  color: #53565d;
+  color: mix(#94969a,#282c34,0.6);
 }
 scrollbar.vertical button.down {
   -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
@@ -5640,10 +5641,10 @@ button.titlebutton:not(.appmenu):hover:active {
   background-color: mix(white,@headerbar_bg_color,0.7);
 }
 button.titlebutton:not(.appmenu):backdrop {
-  background-color: #323640;
+  background-color: shade(#282c34,1.32);
 }
 button.titlebutton:not(.appmenu):backdrop:hover {
-  background-color: #363b46;
+  background-color: shade(#282c34,1.46);
 }
 button.titlebutton:backdrop {
   -gtk-icon-shadow: none;
@@ -5850,7 +5851,7 @@ button.emoji-section:backdrop:not(:checked) {
   border-color: transparent;
 }
 button.emoji-section:hover {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: alpha(white,0.1);
 }
 button.emoji-section:checked {
   border-color: @accent_bg_color;
@@ -5885,7 +5886,7 @@ popover.emoji-completion contents row box {
 }
 
 popover.emoji-completion .emoji:hover {
-  background: #49515f;
+  background: shade(mix(white,#282c34,0.907),1.36);
 }
 
 @define-color theme_fg_color white;
@@ -6612,7 +6613,7 @@ list.view.frame entry:backdrop:disabled {
 popover.background button {
   color: white;
   outline-color: alpha(white,0.3);
-  background-color: mix(white,#3a404b,0.903);
+  background-color: mix(white,mix(white,#282c34,0.907),0.903);
 }
 popover.background button.flat:not(:hover):not(:active) {
   border-color: transparent;
@@ -6625,60 +6626,60 @@ popover.background button.flat:not(:hover):not(:active) {
 popover.background button:hover {
   color: white;
   outline-color: alpha(white,0.3);
-  background-color: mix(white,#3a404b,0.85);
+  background-color: mix(white,mix(white,#282c34,0.907),0.85);
   box-shadow: none;
 }
 popover.background button:active, popover.background button:checked {
   color: white;
   outline-color: alpha(white,0.3);
-  background-color: mix(white,#3a404b,0.703);
+  background-color: mix(white,mix(white,#282c34,0.907),0.703);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 popover.background button:active:hover, popover.background button:checked:hover {
-  background-color: mix(white,#3a404b,0.653);
+  background-color: mix(white,mix(white,#282c34,0.907),0.653);
 }
 popover.background button:disabled {
-  color: mix(mix(white,#282c34,0.5),mix(#3a404b,#21252b,0.15),0.5);
-  background-color: mix(white,#3a404b,0.947);
+  color: mix(mix(white,#282c34,0.5),mix(mix(white,#282c34,0.907),#21252b,0.15),0.5);
+  background-color: mix(white,mix(white,#282c34,0.907),0.947);
   text-shadow: none;
   -gtk-icon-shadow: none;
   box-shadow: none;
 }
 popover.background button:backdrop {
-  color: mix(#94969a,#3a404b,0.2);
-  background-color: mix(white,#3a404b,0.947);
+  color: mix(#94969a,mix(white,#282c34,0.907),0.2);
+  background-color: mix(white,mix(white,#282c34,0.907),0.947);
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 popover.background button:backdrop:disabled {
-  color: mix(#94969a,mix(#3a404b,#21252b,0.15),0.65);
-  background-color: mix(white,#3a404b,0.947);
+  color: mix(#94969a,mix(mix(white,#282c34,0.907),#21252b,0.15),0.65);
+  background-color: mix(white,mix(white,#282c34,0.907),0.947);
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 popover.background entry {
   color: white;
   outline-color: alpha(white,0.3);
-  background-color: mix(white,#3a404b,0.903);
+  background-color: mix(white,mix(white,#282c34,0.907),0.903);
 }
 popover.background entry:disabled {
-  color: mix(mix(white,#282c34,0.5),mix(#3a404b,#21252b,0.15),0.5);
-  background-color: mix(white,#3a404b,0.947);
+  color: mix(mix(white,#282c34,0.5),mix(mix(white,#282c34,0.907),#21252b,0.15),0.5);
+  background-color: mix(white,mix(white,#282c34,0.907),0.947);
   text-shadow: none;
   -gtk-icon-shadow: none;
   box-shadow: none;
 }
 popover.background entry:backdrop {
-  color: mix(mix(white,#282c34,0.2),#3a404b,0.2);
-  background-color: mix(white,#3a404b,0.947);
+  color: mix(mix(white,#282c34,0.2),mix(white,#282c34,0.907),0.2);
+  background-color: mix(white,mix(white,#282c34,0.907),0.947);
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 popover.background entry:backdrop:disabled {
-  color: mix(#94969a,mix(#3a404b,#21252b,0.15),0.65);
-  background-color: mix(white,#3a404b,0.947);
+  color: mix(#94969a,mix(mix(white,#282c34,0.907),#21252b,0.15),0.65);
+  background-color: mix(white,mix(white,#282c34,0.907),0.947);
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
@@ -6742,10 +6743,10 @@ list.view.frame, list.view.frame:backdrop {
   background-color: mix(white,@headerbar_bg_color,0.7);
 }
 .ssd .titlebar.default-decoration button.titlebutton:backdrop {
-  background: #323640;
+  background: shade(#282c34,1.32);
 }
 .ssd .titlebar.default-decoration button.titlebutton:backdrop:hover {
-  background: #363b46;
+  background: shade(#282c34,1.46);
 }
 
 treeview.view:not(:backdrop):not(:selected):hover {
@@ -7010,8 +7011,7 @@ headerbar viewswitcher button:not(:checked):hover:not(:backdrop) {
   background-image: none;
   color: @headerbar_fg_color;
   outline-color: alpha(@headerbar_fg_color,0.3);
-  background-color: mix(white,mix(black,@headerbar_bg_color,0.993),0.85);
-  box-shadow: none;
+  background-color: mix(white,mix(black,@headerbar_bg_color,0.87),0.903);
 }
 headerbar viewswitcher button:not(:checked):not(only-child):first-child:hover, headerbar viewswitcher button:not(:checked):hover + button:not(:checked):not(:hover), headerbar viewswitcher button:not(:checked):not(:hover) + button:not(:checked):hover {
   border-left-color: alpha(currentColor,0.15);
@@ -7020,8 +7020,8 @@ headerbar viewswitcher button:not(:checked):not(only-child):last-child:hover {
   border-right-color: alpha(currentColor,0.15);
 }
 headerbar viewswitcher button:not(:checked):hover:backdrop {
-  color: mix(#94969a,mix(white,#282c34,0.97),0.2);
-  background-color: mix(white,mix(white,#282c34,0.97),0.947);
+  color: mix(#94969a,mix(black,#282c34,0.9),0.2);
+  background-color: mix(white,mix(black,#282c34,0.9),0.947);
   text-shadow: none;
   -gtk-icon-shadow: none;
   background-image: none;
@@ -8277,7 +8277,7 @@ XfdesktopIconView.view .rubberband {
 .xfce4-panel.background button menu .linked button {
   color: white;
   outline-color: alpha(white,0.3);
-  background-color: mix(white,#3a404b,0.903);
+  background-color: mix(white,mix(white,#282c34,0.907),0.903);
 }
 .xfce4-panel.background button menu .linked button:disabled {
   color: mix(white,#282c34,0.5);
