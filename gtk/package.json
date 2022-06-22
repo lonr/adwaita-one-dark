@@ -10,14 +10,16 @@
   "scripts": {
     "build": "heft build --clean",
     "render": "node --es-module-specifier-resolution=node lib/render.js",
-    "compile": "node --es-module-specifier-resolution=node lib/compile.js"
+    "compile": "node --es-module-specifier-resolution=node lib/compile.js",
+    "pack": "rimraf dist && node --es-module-specifier-resolution=node lib/pack.js"
   },
   "dependencies": {
     "css-tree": "~2.1.0",
     "fs-extra": "~10.1.0",
     "sass": "~1.52.2",
     "palette": "workspace:*",
-    "utils": "workspace:*"
+    "utils": "workspace:*",
+    "fast-glob": "~3.2.11"
   },
   "devDependencies": {
     "@rushstack/eslint-config": "~2.6.0",
@@ -25,6 +27,9 @@
     "@types/css-tree": "~1.0.7",
     "@types/node": "~17.0.39",
     "eslint": "~8.17.0",
-    "typescript": "~4.6.3"
+    "typescript": "~4.6.3",
+    "@types/fs-extra": "~9.0.13",
+    "npm-run-all": "~4.1.5",
+    "rimraf": "~3.0.2"
   }
 }

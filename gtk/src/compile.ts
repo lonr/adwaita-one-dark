@@ -19,7 +19,7 @@ export async function compileShell(): Promise<void> {
 // results
 // url('checkbox-off-light.svg')
 function fixResourceUrls(css: string): string {
-  const ast = csstree.parse(css);
+  const ast: csstree.CssNode = csstree.parse(css);
   csstree.walk(ast, (node) => {
     if (node.type === 'Url') {
       // @types/css-tree may be outdated

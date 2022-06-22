@@ -1,5 +1,5 @@
 import fs from 'fs-extra';
-import { fileURLToPath } from 'node:url';
+import { toPathIfFileURL } from './path';
 import sass from 'sass';
 
 export async function compileScss(
@@ -8,15 +8,10 @@ export async function compileScss(
 ): Promise<void> {
   for (let entry of entries) {
     // entry may be a URL or a string(URL string or path string)
-    try {
-      entry = fileURLToPath(entry);
-    } catch (e) {
-      // it's a path string
-      entry = entry.toString();
-    }
-    const result = sass.compile(entry);
-    const css = transformer ? transformer(result.css) : result.css;
-    const filePath = entry.replace(/scss$/, 'css');
+    entry = toPathIfFileURL(entry);
+    const result: sass.CompileResult = sass.compile(entry);
+    const css: string = transformer ? transformer(result.css) : result.css;
+    const filePath: string = entry.replace(/scss$/, 'css');
     await fs.writeFile(filePath, css);
   }
 }

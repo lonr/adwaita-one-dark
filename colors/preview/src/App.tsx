@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { useEffect } from 'react';
 import { argbFromHex, Hct } from '@material/material-color-utilities';
@@ -20,7 +21,7 @@ const findProperTextColor = (roleName: string, rolesGroup: RolesGroup): Hex => {
     return rolesGroup[guessedRole];
   }
 
-  const hct = Hct.fromInt(argbFromHex(rolesGroup[roleName]));
+  const hct: Hct = Hct.fromInt(argbFromHex(rolesGroup[roleName]));
 
   if (hct.tone < 50) {
     return '#fff';

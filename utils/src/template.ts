@@ -17,15 +17,15 @@ export function filePath(templatePath: string, context: object): string {
 // find all .njk files in a folder
 // https://stackoverflow.com/a/25478516/
 export async function findTemplates(fileURLOrPath: URL | string): Promise<string[]> {
-  const path = toPathIfFileURL(fileURLOrPath);
+  const path: string = toPathIfFileURL(fileURLOrPath);
   // throw if the path doesn't exist
-  const stats = await stat(path);
+  const stats: fs.Stats = await stat(path);
   let result: string[] = [];
 
   if (stats.isFile() && path.endsWith('.njk')) {
     result = [path];
   } else if (stats.isDirectory()) {
-    const paths = await readdir(path);
+    const paths: string[] = await readdir(path);
     // https://advancedweb.hu/how-to-use-async-functions-with-array-reduce-in-javascript/
     result = await paths.reduce(
       // https://stackoverflow.com/a/62537717/5783347
@@ -44,14 +44,14 @@ export function renderTemplates(templates: string[], context: object): Promise<v
       // It doesn't seem to make sense to make `render` async
       // https://mozilla.github.io/nunjucks/api.html#asynchronous-support
       // https://github.com/mozilla/nunjucks/blob/fd500902d7c88672470c87170796de52fc0f791a/nunjucks/src/environment.js#L302-L305
-      const res = env.render(templatePath, context);
-      const file = filePath(templatePath, context);
+      const res: string = env.render(templatePath, context);
+      const file: string = filePath(templatePath, context);
       return writeFile(file, res);
     })
   );
 }
 
 export async function findAndRenderTemplates(fileURLOrPath: URL | string, context: object): Promise<void[]> {
-  const templates = await findTemplates(fileURLOrPath);
+  const templates: string[] = await findTemplates(fileURLOrPath);
   return renderTemplates(templates, context);
 }
