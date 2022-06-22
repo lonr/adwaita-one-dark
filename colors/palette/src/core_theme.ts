@@ -8,11 +8,11 @@ import {
 
 export type Hex = `#${string}`;
 
-export type Seed = {
+export interface Seed {
   value: number;
   name: string;
   blend: boolean;
-};
+}
 
 export interface HexPalette {
   tone: (tone: number) => Hex;
@@ -100,16 +100,16 @@ export function themeFromSourceColor(
   source: number,
   customColors: Record<string, ThemeColor> = {}
 ): CoreTheme {
-  const MaterialPalette = CorePalette.of(source);
+  const materialPalette: CorePalette = CorePalette.of(source);
   return {
-    primary: colorFromPalette('regular', MaterialPalette.a1),
-    secondary: colorFromPalette('regular', MaterialPalette.a2),
-    tertial: colorFromPalette('regular', MaterialPalette.a3),
-    neutral: colorFromPalette('neutral', MaterialPalette.n1),
-    neutralVariant: colorFromPalette('neutral-variant', MaterialPalette.n2),
+    primary: colorFromPalette('regular', materialPalette.a1),
+    secondary: colorFromPalette('regular', materialPalette.a2),
+    tertial: colorFromPalette('regular', materialPalette.a3),
+    neutral: colorFromPalette('neutral', materialPalette.n1),
+    neutralVariant: colorFromPalette('neutral-variant', materialPalette.n2),
     info: colorFromPalette('regular', TonalPalette.fromInt(argbFromHex('#2ec27e'))),
     warning: colorFromPalette('regular', TonalPalette.fromInt(argbFromHex('#e5a50a'))),
-    error: colorFromPalette('regular', MaterialPalette.error),
+    error: colorFromPalette('regular', materialPalette.error),
 
     customColors: customColors
   };
@@ -246,11 +246,11 @@ export function colorFromPalette<T extends string>(
 }
 
 export function colorFromSeed(type: string, seed: Seed, source?: number, tonesMaps?: TonesMaps): ThemeColor {
-  let value = seed.value;
+  let value: number = seed.value;
   if (seed.blend && source !== undefined) {
     value = Blend.harmonize(seed.value, source);
   }
-  const palette = TonalPalette.fromInt(value);
+  const palette: TonalPalette = TonalPalette.fromInt(value);
   return { ...colorFromPalette(type, palette, tonesMaps), seed };
 }
 
