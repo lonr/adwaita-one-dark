@@ -25,15 +25,6 @@ jobs:
               dest: gtk/upstream/gnome-shell
             },
             {
-              project: GTK3,
-              repo: 'https://github.com/lassekongo83/adw-gtk3.git',
-              upstreambranch: main,
-              localbranch: gtk3,
-              projectdir: adw-gtk3,
-              src: gtk/src/adw-gtk3/gtk-3.0,
-              dest: gtk/upstream/gtk-3.0
-            },
-            {
               project: GTK4,
               repo: 'https://gitlab.gnome.org/GNOME/libadwaita.git',
               upstreambranch: main,
