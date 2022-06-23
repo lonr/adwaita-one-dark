@@ -3,12 +3,8 @@ import { compileScss } from 'utils';
 
 const srcDir: URL = new URL('../src/', import.meta.url);
 
-export async function compileGtk3(): Promise<void> {
-  return compileScss([new URL('gtk-3.0/gtk.scss', srcDir), new URL('gtk-3.0/gtk-dark.scss', srcDir)]);
-}
-
-export async function compileGtk4(): Promise<void> {
-  return compileScss([new URL('gtk-4.0/gtk.scss', srcDir), new URL('gtk-4.0/gtk-dark.scss', srcDir)]);
+export async function compileColors(): Promise<void> {
+  return compileScss([new URL('colors/gtk.scss', srcDir), new URL('colors/gtk-dark.scss', srcDir)]);
 }
 
 export async function compileShell(): Promise<void> {
@@ -33,7 +29,7 @@ function fixResourceUrls(css: string): string {
 }
 
 export async function compile(): Promise<void[]> {
-  return Promise.all([compileGtk3(), compileGtk4(), compileShell()]);
+  return Promise.all([compileColors(), compileShell()]);
 }
 
 await compile();

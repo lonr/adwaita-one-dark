@@ -1,17 +1,19 @@
-// import { copy } from 'node:fs/promise';
 import { copy } from 'fs-extra';
 import fg from 'fast-glob';
 
 fg.sync([
+  'README.md',
   'src/*/README.md',
   'src/gnome-shell/**/*.svg',
   'src/gnome-shell/gnome-shell.css',
-  'src/gtk-3.0/assets/**/*',
-  'src/gtk-3.0/gtk.css',
-  'src/gtk-3.0/gtk-dark.css',
-  'src/gtk-4.0/assets/**/*',
-  'src/gtk-4.0/gtk.css',
-  'src/gtk-4.0/gtk-dark.css'
+  'src/colors/gtk-dark.css',
+  'src/colors/gtk.css'
 ]).forEach(async (file) => {
-  await copy(file, file.replace(/^src\//, 'dist/'));
+  let dest: string;
+  if (file === 'README.md') {
+    dest = 'dist/README.md';
+  } else {
+    dest = file.replace(/^src\//, 'dist/');
+  }
+  await copy(file, dest);
 });

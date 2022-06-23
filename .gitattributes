@@ -3,6 +3,7 @@
 
 gtk/src/**/*.css linguist-generated
 gtk/upstream/** linguist-vendored
+gtk/upstream/**/*.css linguist-generated
 
 # Don't allow people to merge changes to these generated files, because the result
 # may be invalid.  You need to run "rush update" again.
