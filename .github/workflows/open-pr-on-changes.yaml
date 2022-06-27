@@ -25,6 +25,15 @@ jobs:
               dest: gtk/upstream/gnome-shell
             },
             {
+              project: GTK2,
+              repo: 'https://gitlab.gnome.org/GNOME/gnome-themes-extra.git',
+              upstreambranch: master,
+              localbranch: gtk2,
+              projectdir: gtk2,
+              src: themes/Adwaita-dark/gtk-2.0,
+              dest: gtk/upstream/gtk-2.0-dark
+            },
+            {
               project: GTK4,
               repo: 'https://gitlab.gnome.org/GNOME/libadwaita.git',
               upstreambranch: main,

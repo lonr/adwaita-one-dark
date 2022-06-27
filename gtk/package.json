@@ -19,7 +19,8 @@
     "sass": "~1.52.2",
     "palette": "workspace:*",
     "utils": "workspace:*",
-    "fast-glob": "~3.2.11"
+    "fast-glob": "~3.2.11",
+    "color": "workspace:*"
   },
   "devDependencies": {
     "@rushstack/eslint-config": "~2.6.0",

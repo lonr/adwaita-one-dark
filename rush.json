@@ -492,6 +492,10 @@
     {
       "packageName": "node-rig",
       "projectFolder": "rigs/node-rig"
+    },
+    {
+      "packageName": "color",
+      "projectFolder": "colors/color"
     }
   ]
 }

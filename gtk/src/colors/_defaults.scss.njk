@@ -9,9 +9,9 @@
 // define variables for them in _colors.scss
 
 // The main accent color and the matching text value
-@define-color accent_bg_color @blue_3;
+@define-color accent_bg_color {{ primary.dark.color }};
 @define-color accent_fg_color white;
-@define-color accent_color #{if($variant == 'dark', #78aeed, {{ primary.dark.color }})};
+@define-color accent_color #{if($variant == 'dark', {{ primary.dark.color }}, "@blue_4")};
 
 // destructive-action buttons
 @define-color destructive_bg_color #{if($variant == 'dark', "@red_4", "@red_3")};

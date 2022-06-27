@@ -5,6 +5,27 @@ importers:
   .:
     specifiers: {}
 
+  ../../colors/color:
+    specifiers:
+      '@rushstack/eslint-config': ~2.6.0
+      '@rushstack/heft': ~0.45.5
+      '@types/node': ~17.0.39
+      eslint: ~8.17.0
+      khroma: ~2.0.0
+      palette: workspace:*
+      typescript: ~4.6.3
+      utils: workspace:*
+    dependencies:
+      khroma: 2.0.0
+      palette: link:../palette
+      utils: link:../../utils
+    devDependencies:
+      '@rushstack/eslint-config': 2.6.0_pm7osnb22e4oktq33hptgspr5i
+      '@rushstack/heft': 0.45.6
+      '@types/node': 17.0.41
+      eslint: 8.17.0
+      typescript: 4.6.4
+
   ../../colors/palette:
     specifiers:
       '@material/material-color-utilities': ~0.1.2
@@ -74,6 +95,7 @@ importers:
       '@types/css-tree': ~1.0.7
       '@types/fs-extra': ~9.0.13
       '@types/node': ~17.0.39
+      color: workspace:*
       css-tree: ~2.1.0
       eslint: ~8.17.0
       fast-glob: ~3.2.11
@@ -85,6 +107,7 @@ importers:
       typescript: ~4.6.3
       utils: workspace:*
     dependencies:
+      color: link:../colors/color
       css-tree: 2.1.0
       fast-glob: 3.2.11
       fs-extra: 10.1.0
@@ -141,7 +164,7 @@ importers:
       '@types/node': ~17.0.39
       '@types/nunjucks': ~3.2.1
       '@types/slug': ~5.0.3
-      chroma-js: ~2.4.2
+      color: workspace:*
       eslint: ~8.17.0
       fs-extra: ~10.1.0
       node-rig: workspace:*
@@ -151,7 +174,7 @@ importers:
       slug: ~5.3.0
       typescript: ~4.6.3
     dependencies:
-      chroma-js: 2.4.2
+      color: link:../colors/color
       fs-extra: 10.1.0
       nunjucks: 3.2.3
       palette: link:../colors/palette
@@ -1182,10 +1205,6 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
-
-  /chroma-js/2.4.2:
-    resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
-    dev: false
 
   /chrome-trace-event/1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
@@ -2560,6 +2579,10 @@ packages:
       array-includes: 3.1.5
       object.assign: 4.1.2
     dev: true
+
+  /khroma/2.0.0:
+    resolution: {integrity: sha512-2J8rDNlQWbtiNYThZRvmMv5yt44ZakX+Tz5ZIp/mN1pt4snn+m030Va5Z4v8xA0cQFDXBwO/8i42xL4QPsVk3g==}
+    dev: false
 
   /levn/0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}

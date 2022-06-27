@@ -1,3 +1,5 @@
+import { context as paletteContext } from 'palette';
+import { context as colorContext, filters } from 'color';
 import { resolve } from 'node:path';
 import nunjucks from 'nunjucks';
 import fs from 'fs-extra';
@@ -8,6 +10,8 @@ const { writeFile, readdir, stat } = fs;
 const env: nunjucks.Environment = nunjucks.configure('/');
 
 env.addFilter('slug', (str) => slug(str, { lower: false }));
+
+Object.entries(filters).map(([name, filter]) => env.addFilter(name, filter));
 
 export function filePath(templatePath: string, context: object): string {
   templatePath = env.renderString(templatePath, context);
@@ -51,7 +55,8 @@ export function renderTemplates(templates: string[], context: object): Promise<v
   );
 }
 
-export async function findAndRenderTemplates(fileURLOrPath: URL | string, context: object): Promise<void[]> {
+export async function findAndRenderTemplates(fileURLOrPath: URL | string, context?: object): Promise<void[]> {
+  context = { ...paletteContext, ...colorContext, ...context } as object;
   const templates: string[] = await findTemplates(fileURLOrPath);
   return renderTemplates(templates, context);
 }

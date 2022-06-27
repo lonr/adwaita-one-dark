@@ -1,0 +1,31 @@
+{
+  "name": "color",
+  "version": "1.0.0",
+  "private": true,
+  "description": "color utils",
+  "keywords": [],
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lonr/adwaita-one-dark",
+    "directory": "colors/color"
+  },
+  "license": "GPL-3.0",
+  "author": "lonr",
+  "type": "module",
+  "scripts": {
+    "build": "heft build --clean"
+  },
+  "dependencies": {
+    "palette": "workspace:*",
+    "khroma": "~2.0.0"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-config": "~2.6.0",
+    "@rushstack/heft": "~0.45.5",
+    "@types/node": "~17.0.39",
+    "eslint": "~8.17.0",
+    "typescript": "~4.6.3"
+  }
+}
