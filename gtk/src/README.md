@@ -20,7 +20,7 @@ Open `gnome-tweaks` and change the shell theme. (`Appearance - Shell`)
 
 [Install and enable](https://github.com/lassekongo83/adw-gtk3) the adw-gtk3-dark theme.
 
-Create following symbolic links:
+Create the following symbolic links:
 
 ```sh
 ln -s ~/.local/share/themes/Adwaita-One-Dark/colors/gtk-dark.css ~/.config/gtk-4.0/gtk.css

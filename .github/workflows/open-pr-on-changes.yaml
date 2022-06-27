@@ -29,7 +29,7 @@ jobs:
               repo: 'https://gitlab.gnome.org/GNOME/gnome-themes-extra.git',
               upstreambranch: master,
               localbranch: gtk2,
-              projectdir: gtk2,
+              projectdir: gnome-themes-extra,
               src: themes/Adwaita-dark/gtk-2.0,
               dest: gtk/upstream/gtk-2.0-dark
             },
