@@ -2,6 +2,7 @@
 # https://github.com/github/linguist/blob/master/docs/overrides.md
 
 gtk/src/**/*.css linguist-generated
+gtk/src/gtk-2.0/assets/** linguist-generated
 gtk/upstream/** linguist-vendored
 gtk/upstream/**/*.css linguist-generated
 
