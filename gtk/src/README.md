@@ -7,7 +7,7 @@
 
 ## Install
 
-> **note**
+> **Note**
 > We assume you install themes in `~/.local/share/themes`
 
 Download the `.tar.xz` file from [releases](https://github.com/lonr/adwaita-one-dark/releases) and extract the folder to `~/.local/share/themes`
