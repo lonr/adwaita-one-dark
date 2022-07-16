@@ -46,7 +46,7 @@
 /* GTK NAMED COLORS
    ----------------
    use responsibly! */
-@define-color accent_bg_color #4d78cc;
+@define-color accent_bg_color @blue_3;
 @define-color accent_fg_color white;
 @define-color accent_color @blue_4;
 @define-color destructive_bg_color @red_3;
@@ -73,6 +73,8 @@
 @define-color card_bg_color #ffffff;
 @define-color card_fg_color rgba(0, 0, 0, 0.8);
 @define-color card_shade_color rgba(0, 0, 0, 0.07);
+@define-color dialog_bg_color #fafafa;
+@define-color dialog_fg_color rgba(0, 0, 0, 0.8);
 @define-color popover_bg_color #ffffff;
 @define-color popover_fg_color rgba(0, 0, 0, 0.8);
 @define-color shade_color rgba(0, 0, 0, 0.07);
