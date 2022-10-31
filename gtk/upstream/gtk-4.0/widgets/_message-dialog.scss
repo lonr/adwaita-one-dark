@@ -79,7 +79,7 @@ window.messagedialog {
     border-spacing: 10px;
   }
 
-  .response-area > box > button {
+  .response-area > button {
     padding: 10px 14px;
     border-radius: 0;
 
@@ -105,27 +105,29 @@ window.messagedialog {
     border-radius: $window_radius+1;
 
     .response-area {
-      > box.horizontal > button {
+      &:not(.compact) > button {
         margin-top: -1px;
         margin-right: -1px;
         margin-left: -1px;
 
-        &:first-child {
+        &:first-child:dir(ltr),
+        &:last-child:dir(rtl) {
           border-bottom-left-radius: $window_radius+1;
           margin-left: 0;
         }
 
-        &:last-child {
+        &:last-child:dir(ltr),
+        &:first-child:dir(rtl) {
           border-bottom-right-radius: $window_radius+1;
           margin-right: 0;
         }
       }
 
-      > box.vertical > button {
-          margin-top: -1px;
-          margin-bottom: -1px;
+      &.compact > button {
+        margin-top: -1px;
+        margin-bottom: -1px;
 
-        &:last-child {
+        &:first-child {
           border-bottom-left-radius: $window_radius+1;
           border-bottom-right-radius: $window_radius+1;
           margin-bottom: 0;
