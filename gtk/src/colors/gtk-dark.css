@@ -64,7 +64,7 @@
 @define-color window_bg_color #282c34;
 @define-color window_fg_color white;
 @define-color view_bg_color #21252b;
-@define-color view_fg_color #ffffff;
+@define-color view_fg_color white;
 @define-color headerbar_bg_color #323742;
 @define-color headerbar_fg_color white;
 @define-color headerbar_border_color white;
@@ -77,5 +77,7 @@
 @define-color dialog_fg_color white;
 @define-color popover_bg_color #3a404b;
 @define-color popover_fg_color white;
+@define-color thumbnail_bg_color #383838;
+@define-color thumbnail_fg_color white;
 @define-color shade_color rgba(0, 0, 0, 0.36);
 @define-color scrollbar_outline_color rgba(0, 0, 0, 0.5);

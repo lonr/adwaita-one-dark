@@ -16,15 +16,21 @@ We've generated a set of themes using the One Dark palette. -->
 
 [Adwaita](https://gitlab.gnome.org/GNOME/libadwaita/-/tree/main/src/stylesheet)(the default theme of GNOME) with the [One Dark color scheme](https://github.com/Binaryify/OneDark-Pro/blob/master/themes/OneDark-Pro.json)
 
-![gtk-3.0](./screenshots/gtk-3.0.png)
-
 ## Themes available
 
-- [GTK theme](gtk/src/README.md)
+- [GTK theme](https://github.com/lonr/adwaita-one-dark/releases)
   - [x] GNOME Shell theme
   - [x] GTK 2 theme
-  - [x] adw-gtk3-dark and libadwaita/GTK 4 theme recoloring
+  - [x] GTK 3(adw-gtk3-dark) and GTK 4(libadwaita) theme recoloring
   - [ ] GtkSourceView
 - Terminals
   - [x] [Tilix](terminals/src/tilix/README.md)
 - [ ] Tools for creating other color variants
+
+GNOME Shell Theme:
+
+![gnome-shell](./screenshots/gnome-shell.png)
+
+GTK 2.0(GIMP):
+
+![gimp](./screenshots/gimp.png)
