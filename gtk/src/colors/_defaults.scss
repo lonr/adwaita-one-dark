@@ -9,9 +9,9 @@
 // define variables for them in _colors.scss
 
 // The main accent color and the matching text value
-@define-color accent_bg_color @blue_3;
+@define-color accent_bg_color #4d78cc;
 @define-color accent_fg_color white;
-@define-color accent_color #{if($variant == 'dark', #78aeed, "@blue_4")};
+@define-color accent_color #{if($variant == 'dark', #4d78cc, "@blue_4")};
 
 // destructive-action buttons
 @define-color destructive_bg_color #{if($variant == 'dark', "@red_4", "@red_3")};
@@ -32,15 +32,15 @@
 @define-color error_color #{if($variant == 'dark', #ff7b63, "@red_4")};
 
 // Window
-@define-color window_bg_color #{if($variant == 'light', #fafafa, #242424)};
+@define-color window_bg_color #{if($variant == 'light', #fafafa, #282c34)};
 @define-color window_fg_color #{if($variant == 'light', transparentize(black, .2), white)};
 
 // Views - e.g. text view or tree view
-@define-color view_bg_color #{if($variant == 'light', #ffffff, #1e1e1e)};
+@define-color view_bg_color #{if($variant == 'light', #ffffff, #21252b)};
 @define-color view_fg_color #{if($variant == 'light', #000000, #ffffff)};
 
 // Header bar, search bar, tab bar
-@define-color headerbar_bg_color #{if($variant == 'light', #ebebeb, #303030)};
+@define-color headerbar_bg_color #{if($variant == 'light', #ebebeb, lighten(#282c34, 4.7%))}; //@define-color headerbar_bg_color #{if($variant == 'light', #ebebeb, #303030)};
 @define-color headerbar_fg_color #{if($variant == 'light', transparentize(black, .2), white)};
 @define-color headerbar_border_color #{if($variant == 'light', transparentize(black, .2), white)};
 @define-color headerbar_backdrop_color @window_bg_color;
@@ -52,11 +52,11 @@
 @define-color card_shade_color #{if($variant == 'light', transparentize(black, .93), transparentize(black, .64))};
 
 // Dialogs
-@define-color dialog_bg_color #{if($variant == 'light', #fafafa, #383838)};
+@define-color dialog_bg_color #{if($variant == 'light', #fafafa, lighten(#282c34, 8%))};
 @define-color dialog_fg_color #{if($variant == 'light', transparentize(black, .2), white)};
 
 // Popovers
-@define-color popover_bg_color #{if($variant == 'light', #ffffff, #383838)};
+@define-color popover_bg_color #{if($variant == 'light', #ffffff, lighten(#282c34, 8%))};
 @define-color popover_fg_color #{if($variant == 'light', transparentize(black, .2), white)};
 
 // Miscellaneous
