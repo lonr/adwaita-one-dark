@@ -39,8 +39,8 @@ jobs:
               upstreambranch: main,
               localbranch: gtk4,
               projectdir: libadwaita,
-              src: src/stylesheet,
-              dest: gtk/upstream/gtk-4.0
+              src: src/stylesheet/_defaults.scss src/stylesheet/_palette.scss,
+              dest: gtk/upstream/gtk-4.0/
             }
           ]
     steps:
@@ -53,8 +53,15 @@ jobs:
           pushd /tmp
           git clone --branch ${UPSTEAM_BRANCH} --depth 1 ${UPSTREAM_REPO_URL}
           popd
-          rm -rf ${DEST}
-          cp -a /tmp/${PROJECT_DIR}/${SRC} ${DEST}
+          if [ ${DEST: -1} == '/' ]; then
+            mkdir -p ${DEST}
+            for src in ${SRC}; do
+              cp -a /tmp/${PROJECT_DIR}/${src} ${DEST}
+            done
+          else
+            rm -rf ${DEST}
+            cp -a /tmp/${PROJECT_DIR}/${SRC} ${DEST}
+          fi
           MODIFIED=$(git status --porcelain)
           if [ -n "$MODIFIED" ]; then
             hasModif="true"
