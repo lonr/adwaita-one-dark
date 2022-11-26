@@ -18,7 +18,7 @@ Open `gnome-tweaks` and change the shell theme. (`Appearance -- Shell`)
 
 ## Recolor GTK 4 (libadwaita) and GTK3 (adw-gtk3-dark)
 
-[Install and enable](https://github.com/lassekongo83/adw-gtk3) the 3rd-part adw-gtk3-dark theme.
+[Install and enable](https://github.com/lassekongo83/adw-gtk3) the 3rd-party adw-gtk3-dark theme.
 
 Create the following symbolic links:
 
