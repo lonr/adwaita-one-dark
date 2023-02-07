@@ -1,5 +1,5 @@
 import { findAndRenderTemplates } from 'utils';
 
-const srcDir: URL = new URL('../src/', import.meta.url);
+const dir: URL = new URL('../templates/', import.meta.url);
 
-await findAndRenderTemplates(srcDir);
+await findAndRenderTemplates(dir);

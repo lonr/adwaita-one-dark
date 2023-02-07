@@ -22,7 +22,7 @@ jobs:
               localbranch: gnome-shell,
               projectdir: gnome-shell,
               src: data/theme,
-              dest: gtk/upstream/gnome-shell
+              dest: adwaita/upstream/gnome-shell,
             },
             {
               project: GTK2,
@@ -31,7 +31,7 @@ jobs:
               localbranch: gtk2,
               projectdir: gnome-themes-extra,
               src: themes/Adwaita-dark/gtk-2.0,
-              dest: gtk/upstream/gtk-2.0-dark
+              dest: adwaita/upstream/gtk-2.0-dark,
             },
             {
               project: GTK4,
@@ -40,8 +40,8 @@ jobs:
               localbranch: gtk4,
               projectdir: libadwaita,
               src: src/stylesheet/_defaults.scss src/stylesheet/_palette.scss,
-              dest: gtk/upstream/gtk-4.0/
-            }
+              dest: adwaita/upstream/gtk-4.0/,
+            },
           ]
     steps:
       # Checkout code

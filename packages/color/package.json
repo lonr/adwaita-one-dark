@@ -1,0 +1,40 @@
+{
+  "name": "color",
+  "version": "0.0.0",
+  "private": true,
+  "description": "color utils",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lonr/adwaita-one-dark",
+    "directory": "packages/color"
+  },
+  "license": "AGPL-3.0-or-later",
+  "author": "lonr",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "lint": "tsc --noEmit",
+    "build": "rimraf dist && tsc"
+  },
+  "dependencies": {
+    "khroma": "~2.0.0",
+    "tsconfig": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "~18.11.19",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^4.1.2",
+    "typescript": "~4.9.5"
+  },
+  "engines": {
+    "node": ">=19.6.0"
+  }
+}

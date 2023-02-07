@@ -1,0 +1,27 @@
+{
+  "name": "adwaita-one-dark",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "author": "lonr",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint . && prettier --check ."
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.19",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "~8.27.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-node": "^11.1.0",
+    "prettier": "^2.8.3",
+    "tsconfig": "workspace:*",
+    "turbo": "^1.7.3",
+    "typescript": "^4.9.5"
+  },
+  "packageManager": "pnpm@7.26.3",
+  "engines": {
+    "node": ">=19.6.0"
+  }
+}

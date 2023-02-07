@@ -1,4 +1,6 @@
-/gtk/package
+.turbo
+release
+build
 
 # Logs
 *.log

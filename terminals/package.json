@@ -1,25 +1,29 @@
 {
   "name": "terminals",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "description": "",
   "keywords": [],
-  "license": "GPL-3.0",
-  "author": "",
+  "license": "AGPL-3.0-or-later",
+  "author": "lonr",
   "type": "module",
   "scripts": {
-    "build": "heft build --clean",
-    "render": "node --es-module-specifier-resolution=node lib/render.js"
+    "lint": "tsc --noEmit",
+    "build": "rimraf dist && tsc",
+    "render": "node --loader=extensionless dist/render.js"
   },
   "dependencies": {
     "palette": "workspace:*",
     "utils": "workspace:*"
   },
   "devDependencies": {
-    "@rushstack/eslint-config": "~3.1.1",
-    "@rushstack/heft": "~0.48.8",
-    "@types/node": "~18.11.9",
-    "eslint": "~8.27.0",
-    "typescript": "~4.9.3"
+    "@types/node": "~18.11.19",
+    "extensionless": "^1.1.0",
+    "rimraf": "^4.1.2",
+    "tsconfig": "workspace:*",
+    "typescript": "~4.9.5"
+  },
+  "engines": {
+    "node": ">=19.6.0"
   }
 }

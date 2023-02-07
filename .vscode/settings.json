@@ -2,12 +2,14 @@
   "files.associations": {
     "*.json": "jsonc"
   },
-  "cSpell.words": ["argb", "csstree", "deepmerge", "mergeable", "rushstack", "Shaden", "Tinten"],
-  "eslint.workingDirectories": [
-    { "pattern": "./colors/*/" },
-    { "pattern": "./rigs/*/" },
-    "gtk",
-    "terminals",
-    "./utils"
+  "cSpell.words": [
+    "argb",
+    "csstree",
+    "deepmerge",
+    "extensionless",
+    "mergeable",
+    "rushstack",
+    "Shaden",
+    "Tinten"
   ]
 }
