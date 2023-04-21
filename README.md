@@ -21,10 +21,10 @@ We've generated a set of themes using the One Dark palette. -->
 - [GTK theme](https://github.com/lonr/adwaita-one-dark/releases)
   - [x] GNOME Shell theme
   - [x] GTK 2 theme
-  - [x] GTK 3(adw-gtk3-dark) and GTK 4(libadwaita) theme recoloring
+  - [x] Recolor GTK 4 (libadwaita) and GTK3 (adw-gtk3-dark)
   - [ ] GtkSourceView
 - Terminals
-  - [x] [Tilix](terminals/src/tilix/README.md)
+  - [x] [Tilix](terminals/templates/tilix/README.md)
 - [ ] Tools for creating other color variants
 
 GNOME Shell Theme:

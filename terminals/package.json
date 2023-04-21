@@ -18,8 +18,8 @@
   },
   "devDependencies": {
     "@types/node": "~18.11.19",
-    "extensionless": "^1.1.0",
-    "rimraf": "^4.1.2",
+    "extensionless": "^1.4.5",
+    "rimraf": "^4.4.1",
     "tsconfig": "workspace:*",
     "typescript": "~4.9.5"
   },
