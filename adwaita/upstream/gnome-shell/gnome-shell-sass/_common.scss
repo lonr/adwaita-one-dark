@@ -90,6 +90,7 @@ stage {
   &:selected,
   &:active { @include button(active);}
   &:checked { @include button(checked);}
+  &.default { @include button(default);}
 
   &.flat {
     @include button(normal, $flat:true);
@@ -99,6 +100,7 @@ stage {
     &:selected,
     &:active { @include button(active, $flat:true);}
     &:checked { @include button(checked, $flat:true);}
+    &.default { @include button(default, $flat:false);}
   }
 }
 
@@ -167,6 +169,7 @@ stage {
 // tooltip
 %tooltip {
   background-color: transparentize(black, 0.1);
+  border: 1px solid transparentize($light_1, 0.9);
   color: $light_1;
 
   border-radius: 99px;
@@ -174,6 +177,7 @@ stage {
   text-align: center;
 
   @if $is_highcontrast {
+    background-color: black;
     border-color: $hc_inset_color;
   }
 }
