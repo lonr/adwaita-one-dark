@@ -7,14 +7,14 @@
   "license": "AGPL-3.0-or-later",
   "author": "lonr",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "lint": "tsc --noEmit",
     "build": "rimraf dist && tsc"
@@ -22,15 +22,16 @@
   "dependencies": {
     "color": "workspace:*",
     "fs-extra": "~10.1.0",
+    "node-sass": "^9.0.0",
     "nunjucks": "~3.2.4",
     "palette": "workspace:*",
-    "sass": "~1.56.2",
     "slug": "~8.2.2"
   },
   "devDependencies": {
     "@types/chroma-js": "~2.1.5",
     "@types/fs-extra": "~9.0.13",
     "@types/node": "~18.11.19",
+    "@types/node-sass": "^4.11.3",
     "@types/nunjucks": "~3.2.2",
     "@types/slug": "~5.0.3",
     "eslint": "~8.27.0",
