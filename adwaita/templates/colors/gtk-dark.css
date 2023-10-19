@@ -70,6 +70,15 @@
 @define-color headerbar_border_color white;
 @define-color headerbar_backdrop_color @window_bg_color;
 @define-color headerbar_shade_color rgba(0, 0, 0, 0.36);
+@define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.9);
+@define-color sidebar_bg_color #323742;
+@define-color sidebar_fg_color white;
+@define-color sidebar_backdrop_color #2d323b;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.36);
+@define-color secondary_sidebar_bg_color #2d323b;
+@define-color secondary_sidebar_fg_color white;
+@define-color secondary_sidebar_backdrop_color #2b2f37;
+@define-color secondary_sidebar_shade_color rgba(0, 0, 0, 0.36);
 @define-color card_bg_color rgba(255, 255, 255, 0.08);
 @define-color card_fg_color white;
 @define-color card_shade_color rgba(0, 0, 0, 0.36);
