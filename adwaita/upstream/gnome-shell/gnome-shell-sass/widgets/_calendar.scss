@@ -50,12 +50,13 @@
     }
 
     .pager-button {
-      @extend .button.flat;
+      @extend .button, .flat;
       padding: 0 !important;
       height: 32px;
       width: 32px;
       margin: 2px;
       border-radius: $base_border_radius;
+      transition-duration: 100ms;
     }
   }
 
@@ -63,7 +64,7 @@
   .calendar-day {
     @extend %numeric;
     @extend %smaller;
-    @extend .button.flat;
+    @extend .button, .flat;
 
     border-radius: 99px;
     height: 3em !important;
@@ -96,7 +97,8 @@
     }
 
     &.calendar-today {
-      @extend .button.default;
+      @extend .button, .default;
+      color: $selected_fg_color; /* override weekends */
     }
 
     &.calendar-day-with-events {
