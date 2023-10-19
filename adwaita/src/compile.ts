@@ -8,7 +8,11 @@ export async function compileColors(): Promise<void> {
 }
 
 export async function compileShell(): Promise<void> {
-  return compileScss([new URL('gnome-shell/gnome-shell.scss', srcDir)], fixResourceUrls);
+  await Promise.all([
+    compileScss([new URL('gnome-shell/gnome-shell.scss', srcDir)], fixResourceUrls),
+    compileScss([new URL('gnome-shell/gnome-shell-dark.scss', srcDir)], fixResourceUrls),
+    compileScss([new URL('gnome-shell/gnome-shell-light.scss', srcDir)], fixResourceUrls),
+  ]);
 }
 
 // url('resource:///org/gnome/shell/theme/checkbox-off-light.svg')

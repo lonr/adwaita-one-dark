@@ -5,6 +5,8 @@ const files = fg.sync([
   'templates/**/README.md',
   'templates/gnome-shell/**/*.svg',
   'templates/gnome-shell/gnome-shell.css',
+  'templates/gnome-shell/gnome-shell-light.css',
+  'templates/gnome-shell/gnome-shell-dark.css',
   'templates/colors/gtk-dark.css',
   'templates/colors/gtk.css',
   'templates/gtk-2.0/gtkrc',
