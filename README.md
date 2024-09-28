@@ -31,6 +31,6 @@ GNOME Shell Theme:
 
 ![gnome-shell](./screenshots/gnome-shell.png)
 
-GTK 2.0(GIMP):
+GTK 3.0(GIMP):
 
 ![gimp](./screenshots/gimp.png)
