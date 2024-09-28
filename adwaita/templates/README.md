@@ -1,6 +1,6 @@
 # Adwaita One Dark
 
-- [x] GNOME Shell theme. GNOME 44
+- [x] GNOME Shell theme. GNOME 47
 - [x] Recolor GTK 4 (libadwaita) and GTK3 ([adw-gtk3-dark](https://github.com/lassekongo83/adw-gtk3))
 - [x] GTK 2 theme
 - [ ] GtkSourceView
