@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { lighten as _lighten, darken as _darken, toHex } from 'khroma';
 
-function hexify<T extends (...args: any[]) => string>(fn: T): (...args: Parameters<T>) => string {
+function hexify<T extends (...args: any[]) => string>(
+  fn: T,
+): (...args: Parameters<T>) => string {
   return function (...args: Parameters<T>) {
     return toHex(fn(...args));
   };

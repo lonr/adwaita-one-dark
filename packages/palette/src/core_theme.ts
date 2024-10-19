@@ -25,12 +25,12 @@ export type Roles<
   R = T extends 'regular'
     ? RegularRoles
     : T extends 'neutral'
-    ? NeutralRoles
-    : T extends 'neutral-variant'
-    ? NeutralVariantRoles
-    : T extends 'ansi-color'
-    ? AnsiRoles
-    : string
+      ? NeutralRoles
+      : T extends 'neutral-variant'
+        ? NeutralVariantRoles
+        : T extends 'ansi-color'
+          ? AnsiRoles
+          : string,
 > = R;
 
 export interface ThemeColor<T extends string = string> {
@@ -41,7 +41,11 @@ export interface ThemeColor<T extends string = string> {
   palette?: HexPalette;
 }
 
-export type RegularRoles = 'color' | 'onColor' | 'colorContainer' | 'onColorContainer';
+export type RegularRoles =
+  | 'color'
+  | 'onColor'
+  | 'colorContainer'
+  | 'onColorContainer';
 
 export type RegularGroup = RolesGroup<RegularRoles>;
 
@@ -61,7 +65,10 @@ export type NeutralGroup = RolesGroup<NeutralRoles>;
 
 export type NeutralColor = ThemeColor<'neutral'>;
 
-export type NeutralVariantRoles = 'surfaceVariant' | 'onSurfaceVariant' | 'outline';
+export type NeutralVariantRoles =
+  | 'surfaceVariant'
+  | 'onSurfaceVariant'
+  | 'outline';
 
 export type NeutralVariantGroup = RolesGroup<NeutralVariantRoles>;
 
@@ -94,11 +101,13 @@ export interface TonesMaps<T extends string = string> {
   dark: TonesMap<T>;
 }
 
-export type CoreTheme = CoreColors & { customColors: Record<string, ThemeColor> };
+export type CoreTheme = CoreColors & {
+  customColors: Record<string, ThemeColor>;
+};
 
 export function themeFromSourceColor(
   source: number,
-  customColors: Record<string, ThemeColor> = {}
+  customColors: Record<string, ThemeColor> = {},
 ): CoreTheme {
   const materialPalette: CorePalette = CorePalette.of(source);
   return {
@@ -107,8 +116,14 @@ export function themeFromSourceColor(
     tertial: colorFromPalette('regular', materialPalette.a3),
     neutral: colorFromPalette('neutral', materialPalette.n1),
     neutralVariant: colorFromPalette('neutral-variant', materialPalette.n2),
-    info: colorFromPalette('regular', TonalPalette.fromInt(argbFromHex('#2ec27e'))),
-    warning: colorFromPalette('regular', TonalPalette.fromInt(argbFromHex('#e5a50a'))),
+    info: colorFromPalette(
+      'regular',
+      TonalPalette.fromInt(argbFromHex('#2ec27e')),
+    ),
+    warning: colorFromPalette(
+      'regular',
+      TonalPalette.fromInt(argbFromHex('#e5a50a')),
+    ),
     error: colorFromPalette('regular', materialPalette.error),
 
     customColors: customColors,
@@ -117,13 +132,15 @@ export function themeFromSourceColor(
 
 export function groupFromTonesMap<T extends string>(
   palette: TonalPalette,
-  tonesMap: TonesMap<T>
+  tonesMap: TonesMap<T>,
 ): RolesGroup<T> {
   return Object.fromEntries(
     Object.entries(tonesMap).map(([role, toneOrColor]) => [
       role,
-      typeof toneOrColor === 'number' ? hexFromArgb(palette.tone(toneOrColor)) : toneOrColor,
-    ])
+      typeof toneOrColor === 'number'
+        ? hexFromArgb(palette.tone(toneOrColor))
+        : toneOrColor,
+    ]),
   ) as RolesGroup<T>;
 }
 
@@ -137,7 +154,7 @@ export function regularColor(
       onColorContainer: 10,
     },
     dark: { color: 80, onColor: 20, colorContainer: 30, onColorContainer: 90 },
-  }
+  },
 ): RegularColor {
   return {
     type: 'regular',
@@ -170,7 +187,7 @@ export function neutralColor(
       inverseOnSurface: 20,
       inversePrimary: 40,
     },
-  }
+  },
 ): NeutralColor {
   return {
     type: 'neutral',
@@ -193,7 +210,7 @@ export function neutralVariantColor(
       onSurfaceVariant: 80,
       outline: 60,
     },
-  }
+  },
 ): NeutralVariantColor {
   return {
     type: 'neutral-variant',
@@ -211,7 +228,7 @@ export function ansiColor(
       colorBright: 90,
     },
     dark: { color: 40, colorBright: 90 },
-  }
+  },
 ): AnsiColor {
   return {
     type: 'ansi-color',
@@ -223,7 +240,7 @@ export function ansiColor(
 export function colorFromPalette<T extends string>(
   type: T,
   palette: TonalPalette,
-  tonesMaps?: TonesMaps<Roles<T>>
+  tonesMaps?: TonesMaps<Roles<T>>,
 ): ThemeColor<T> {
   if (tonesMaps) {
     return {
@@ -245,7 +262,12 @@ export function colorFromPalette<T extends string>(
   }
 }
 
-export function colorFromSeed(type: string, seed: Seed, source?: number, tonesMaps?: TonesMaps): ThemeColor {
+export function colorFromSeed(
+  type: string,
+  seed: Seed,
+  source?: number,
+  tonesMaps?: TonesMaps,
+): ThemeColor {
   let value: number = seed.value;
   if (seed.blend && source !== undefined) {
     value = Blend.harmonize(seed.value, source);
@@ -255,5 +277,7 @@ export function colorFromSeed(type: string, seed: Seed, source?: number, tonesMa
 }
 
 export function hexPalette(tonalPalette: TonalPalette): HexPalette {
-  return { tone: (tone: number) => hexFromArgb(tonalPalette.tone(tone)) as Hex };
+  return {
+    tone: (tone: number) => hexFromArgb(tonalPalette.tone(tone)) as Hex,
+  };
 }

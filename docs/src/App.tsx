@@ -16,10 +16,10 @@ const findProperTextColor = (roleName: string, rolesGroup: RolesGroup): Hex => {
     guessedRole = 'on' + roleName.charAt(0).toUpperCase() + roleName.slice(1);
   }
   if (rolesGroup[guessedRole]) {
-    return rolesGroup[guessedRole];
+    return rolesGroup[guessedRole]!;
   }
 
-  const hct: Hct = Hct.fromInt(argbFromHex(rolesGroup[roleName]));
+  const hct: Hct = Hct.fromInt(argbFromHex(rolesGroup[roleName]!));
 
   if (hct.tone < 50) {
     return '#fff';
@@ -34,13 +34,25 @@ const Color = ({ name, color }: ColorProps): JSX.Element => {
       <h2>{name}</h2>
       <h3>light:</h3>
       {Object.entries(color.light).map(([role, hex]) => (
-        <div key={role} style={{ background: hex, color: findProperTextColor(role, color.light) }}>
+        <div
+          key={role}
+          style={{
+            background: hex,
+            color: findProperTextColor(role, color.light),
+          }}
+        >
           {role + ': ' + hex}
         </div>
       ))}
       <h3>dark:</h3>
       {Object.entries(color.dark).map(([role, hex]) => (
-        <div key={role} style={{ background: hex, color: findProperTextColor(role, color.dark) }}>
+        <div
+          key={role}
+          style={{
+            background: hex,
+            color: findProperTextColor(role, color.dark),
+          }}
+        >
           {role + ': ' + hex}
         </div>
       ))}

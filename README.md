@@ -24,6 +24,7 @@ We've generated a set of themes using the One Dark palette. -->
   - [x] Recolor GTK 4 (libadwaita) and GTK3 (adw-gtk3-dark)
   - [ ] GtkSourceView
 - Terminals
+  - [x] [Ptxis](terminals/templates/ptxis/README.md)
   - [x] [Tilix](terminals/templates/tilix/README.md)
 - [ ] Tools for creating other color variants
 

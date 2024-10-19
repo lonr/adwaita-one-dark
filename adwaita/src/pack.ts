@@ -24,5 +24,5 @@ await Promise.all(
     }
     await copy(file, dest);
     return;
-  })
+  }),
 );

@@ -1,7 +1,13 @@
 import { argbFromHex, TonalPalette } from '@material/material-color-utilities';
 import merge from 'deepmerge';
 import isMergeableObject from 'is-mergeable-object';
-import { AnsiColor, ansiColor, Hex, CoreTheme, themeFromSourceColor } from './core_theme';
+import {
+  AnsiColor,
+  ansiColor,
+  Hex,
+  CoreTheme,
+  themeFromSourceColor,
+} from './core_theme';
 import { RecursivePartial } from './typing';
 
 export const themeName = 'One Dark';
@@ -44,13 +50,16 @@ const ansiColors: AnsiColors = Object.fromEntries(
       light: { color, colorBright },
       dark: { color, colorBright },
     }),
-  ])
+  ]),
 );
 
-const coreTheme: CoreTheme = themeFromSourceColor(argbFromHex(primary), { ...ansiColors });
+const coreTheme: CoreTheme = themeFromSourceColor(argbFromHex(primary), {
+  ...ansiColors,
+});
 
 export const theme: CoreTheme = merge(coreTheme, overwritten, {
-  isMergeableObject: (o: unknown) => !(o instanceof TonalPalette) && isMergeableObject(o),
+  isMergeableObject: (o: unknown) =>
+    !(o instanceof TonalPalette) && isMergeableObject(o),
 }) as CoreTheme;
 
 export * from './core_theme';
@@ -60,20 +69,20 @@ export interface AnsiHexColors {
 }
 
 export const ansi: AnsiHexColors = {
-  black: theme.customColors.black.light.color,
-  red: theme.customColors.red.light.color,
-  green: theme.customColors.green.light.color,
-  yellow: theme.customColors.yellow.light.color,
-  blue: theme.customColors.blue.light.color,
-  magenta: theme.customColors.magenta.light.color,
-  cyan: theme.customColors.cyan.light.color,
-  white: theme.customColors.white.light.color,
-  blackBright: theme.customColors.black.light.colorBright,
-  redBright: theme.customColors.red.light.colorBright,
-  greenBright: theme.customColors.green.light.colorBright,
-  yellowBright: theme.customColors.yellow.light.colorBright,
-  blueBright: theme.customColors.blue.light.colorBright,
-  magentaBright: theme.customColors.magenta.light.colorBright,
-  cyanBright: theme.customColors.cyan.light.colorBright,
-  whiteBright: theme.customColors.white.light.colorBright,
+  black: theme.customColors.black!.light.color!,
+  red: theme.customColors.red!.light.color!,
+  green: theme.customColors.green!.light.color!,
+  yellow: theme.customColors.yellow!.light.color!,
+  blue: theme.customColors.blue!.light.color!,
+  magenta: theme.customColors.magenta!.light.color!,
+  cyan: theme.customColors.cyan!.light.color!,
+  white: theme.customColors.white!.light.color!,
+  blackBright: theme.customColors.black!.light.colorBright!,
+  redBright: theme.customColors.red!.light.colorBright!,
+  greenBright: theme.customColors.green!.light.colorBright!,
+  yellowBright: theme.customColors.yellow!.light.colorBright!,
+  blueBright: theme.customColors.blue!.light.colorBright!,
+  magentaBright: theme.customColors.magenta!.light.colorBright!,
+  cyanBright: theme.customColors.cyan!.light.colorBright!,
+  whiteBright: theme.customColors.white!.light.colorBright!,
 };

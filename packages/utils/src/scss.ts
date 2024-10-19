@@ -4,7 +4,7 @@ import sass from 'node-sass';
 
 export async function compileScss(
   entries: (URL | string)[],
-  transformer?: (css: string) => string
+  transformer?: (css: string) => string,
 ): Promise<void> {
   for (let entry of entries) {
     // entry may be a URL or a string(URL string or path string)

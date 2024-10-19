@@ -21,7 +21,9 @@ export function filePath(templatePath: string, context: object): string {
 
 // find all .njk files in a folder
 // https://stackoverflow.com/a/25478516/
-export async function findTemplates(fileURLOrPath: URL | string): Promise<string[]> {
+export async function findTemplates(
+  fileURLOrPath: URL | string,
+): Promise<string[]> {
   const path: string = toPathIfFileURL(fileURLOrPath);
   // throw if the path doesn't exist
   const stats: fs.Stats = await stat(path);
@@ -34,16 +36,20 @@ export async function findTemplates(fileURLOrPath: URL | string): Promise<string
     // https://advancedweb.hu/how-to-use-async-functions-with-array-reduce-in-javascript/
     result = await paths.reduce(
       // https://stackoverflow.com/a/62537717/5783347
-      async (prev, curr) => (await prev).concat(await findTemplates(resolve(path, curr))),
+      async (prev, curr) =>
+        (await prev).concat(await findTemplates(resolve(path, curr))),
       // just `[]` should be fine
-      Promise.resolve([] as string[])
+      Promise.resolve([] as string[]),
     );
   }
 
   return result;
 }
 
-export function renderTemplates(templates: string[], context: object): Promise<void[]> {
+export function renderTemplates(
+  templates: string[],
+  context: object,
+): Promise<void[]> {
   return Promise.all(
     templates.map((templatePath) => {
       // It doesn't seem to make sense to make `render` async
@@ -52,11 +58,14 @@ export function renderTemplates(templates: string[], context: object): Promise<v
       const res: string = env.render(templatePath, context);
       const file: string = filePath(templatePath, context);
       return writeFile(file, res);
-    })
+    }),
   );
 }
 
-export async function findAndRenderTemplates(fileURLOrPath: URL | string, context?: object): Promise<void[]> {
+export async function findAndRenderTemplates(
+  fileURLOrPath: URL | string,
+  context?: object,
+): Promise<void[]> {
   context = { ...paletteContext, ...colorContext, ...context } as object;
   const templates: string[] = await findTemplates(fileURLOrPath);
   return renderTemplates(templates, context);
