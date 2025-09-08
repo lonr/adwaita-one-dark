@@ -5,7 +5,7 @@ on:
     paths:
       - '.github/workflows/open-pr-on-changes.yaml'
   schedule:
-    - cron: '8 0 * * *'
+    - cron: '0 0 * * 6'
 
 jobs:
   refresh-upstream:
@@ -39,7 +39,7 @@ jobs:
               upstreambranch: main,
               localbranch: gtk4,
               projectdir: libadwaita,
-              src: src/stylesheet/_defaults.scss src/stylesheet/_palette.scss,
+              src: src/stylesheet/_colors.scss src/stylesheet/_palette.scss,
               dest: adwaita/upstream/gtk-4.0/,
             },
           ]
